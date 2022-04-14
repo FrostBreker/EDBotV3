@@ -62,8 +62,8 @@ module.exports = {
                 const endDate = timeline[i].end_date.split(" ");
 
                 embedPrincipal.addFields(
-                    { name: "<:box:959564276467642459>", value: `**${timeline[i].text || timeline[i].matiere}** de **${startDate[1]}** à **${endDate[1]}**.`, inline: true },
-                    { name: "<:nitro:963321732238815272>", value: `**${timeline[i].prof || timeline[i].typeCours}**`, inline: true },
+                    { name: "📚", value: `**${timeline[i].text || timeline[i].matiere}** de **${startDate[1]}** à **${endDate[1]}**.`, inline: true },
+                    { name: "👩‍🏫", value: `**${timeline[i].prof || timeline[i].typeCours}**`, inline: true },
                     { name: "\u200B", value: "\u200B", inline: false }
                 );
             }

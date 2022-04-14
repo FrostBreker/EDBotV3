@@ -67,7 +67,7 @@ module.exports = {
             .setColor(430591)
             .setTitle(`> 🔔 | Message de ${h._raw.from.name}`)
             .setThumbnail(user.avatarURL() || 'https://cdn.discordapp.com/attachments/779466058171154483/842742558354571274/logo_ecole_directe2.jpg')
-            .setDescription("**Messages : ** `0 - " + nbv + "`\n\n<:annonce:962378435815161936> : **" + h._raw.subject + "**\n\n<:__:962378088082190366>  : **" + ref + "**\n\n<:planning:959563680398315540> : " + "<t:" + parseInt(Date.parse(h.date) / 1000) + ":R>")
+            .setDescription("**Messages : ** `0 - " + nbv + "`\n\n📢 : **" + h._raw.subject + "**\n\n📚  : **" + ref + "**\n\n📅 : " + "<t:" + parseInt(Date.parse(h.date) / 1000) + ":R>")
             .setTimestamp()
             .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
 

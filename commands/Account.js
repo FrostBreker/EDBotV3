@@ -44,23 +44,23 @@ module.exports = {
 
         const embedPrincipal = new MessageEmbed()
             .setColor(430591)
-            .setTitle(`<:cloche:959567641679368213> | Compte de ${user.tag}`)
-            .setDescription(`\n\n**<:user:959563246044610580> ${acc.prenom} ${acc.nom}**\n\u200B\n> **<:planning:959563680398315540> ${acc.anneeScolaireCourante} | <:box:959564276467642459> ${acc.profile.classe.libelle}**\n\u200B\n`)
+            .setTitle(`🔔 | Compte de ${user.tag}`)
+            .setDescription(`\n\n**👤 ${acc.prenom} ${acc.nom}**\n\u200B\n> **📅 ${acc.anneeScolaireCourante} | 🎒 ${acc.profile.classe.libelle}**\n\u200B\n`)
             .setThumbnail(authPass.picture)
             .setTimestamp()
             .addFields(
                 {
-                    name: `<:flche2:959565591650381864> Confidentialités :  ${PPV}`,
+                    name: `➡️ Confidentialités :  ${PPV}`,
                     value: "\u200B",
                     inline: false
                 },
                 {
-                    name: `<:flche2:959565591650381864> Photo : ${PHOTOPP}`,
+                    name: `➡️ Photo : ${PHOTOPP}`,
                     value: "\u200B",
                     inline: false
                 },
                 {
-                    name: `<:flche2:959565591650381864> Autopost : ${autoPost}`,
+                    name: `➡️ Autopost : ${autoPost}`,
                     value: "\u200B",
                     inline: false
                 }

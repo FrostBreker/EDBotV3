@@ -59,7 +59,7 @@ module.exports = {
             .setColor(430591)
             .setTitle(`> 🔔 | Note de ${gr.subjectName}`)
             .setThumbnail(user.avatarURL() || 'https://cdn.discordapp.com/attachments/779466058171154483/842742558354571274/logo_ecole_directe2.jpg')
-            .setDescription("**Notes :** `" + "0 - " + nbv + "`\n\n<:annonce:962378435815161936> : **" + gr.subjectName + "** - **" + gr.name + "** - **" + gr._raw.typeDevoir + "**\n\n<:stats:962354418660028416> : " + gr.value + "/20 (**Coef** : " + gr._raw.coef + ")\n\n" + client.getPercent(gr.value, gr.classAvg, gr.outOf) + "\n\n<:planning:959563680398315540> : <t:" + parseInt(Date.parse(date) / 1000) + ":R>")
+            .setDescription("**Notes :** `" + "0 - " + nbv + "`\n\n📢 : **" + gr.subjectName + "** - **" + gr.name + "** - **" + gr._raw.typeDevoir + "**\n\n📈 : " + gr.value + "/20 (**Coef** : " + gr._raw.coef + ")\n\n" + client.getPercent(gr.value, gr.classAvg, gr.outOf) + "\n\n📅 : <t:" + parseInt(Date.parse(date) / 1000) + ":R>")
             .setTimestamp()
             .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
 

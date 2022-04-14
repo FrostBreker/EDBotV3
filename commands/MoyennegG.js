@@ -58,7 +58,7 @@ module.exports = {
             .setColor(430591)
             .setTitle(`> 🔔 | Moyenne genérale`)
             .setThumbnail(user.avatarURL() || 'https://cdn.discordapp.com/attachments/779466058171154483/842742558354571274/logo_ecole_directe2.jpg')
-            .setDescription("**Periodes :** `" + "0 - " + nbv + "`\n\n<:planning:959563680398315540> : **" + semester.periode + "**\n\n<:stats:962354418660028416> : **" + semester.ensembleMatieres.moyenneGenerale + "/20" + "**\n\n" + client.getPercent(semester.ensembleMatieres.moyenneGenerale, moyenneClasse, 20))
+            .setDescription("**Periodes :** `" + "0 - " + nbv + "`\n\n📅 : **" + semester.periode + "**\n\n📈 : **" + semester.ensembleMatieres.moyenneGenerale + "/20" + "**\n\n" + client.getPercent(semester.ensembleMatieres.moyenneGenerale, moyenneClasse, 20))
             .setTimestamp()
             .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
 
