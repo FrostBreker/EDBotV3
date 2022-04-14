@@ -1,35 +1,14 @@
-const express = require('express');
 const cron = require('node-cron');
-const cors = require('cors');
 const { add, send } = require("../../Actions/Autopost/index");
 
 module.exports = {
     name: "ready",
     once: true,
     async execute(client) {
-        //Start api
-        const app = express();
-        const corsOptions = {
-            origin: [`${process.env.CLIENT_URL}`],
-            credentials: true,
-            allowedHeaders: ["sessionId", "Content-Type", "Authorization", "authorization"],
-            exposedHeaders: ["sessionId"],
-            methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-            preflightContinue: false,
-        };
-        app.use(cors(corsOptions));
-        app.listen(process.env.PORT, () => {
-            console.log(`${client.timestampParser()} => Express server is connected on port: ${process.env.PORT}`)
-        });
 
         //API
         const guild = [];
         await client.guilds.cache.map(e => guild.push(e));
-        setInterval(() => app.get('/', (req, res) => {
-            const infoBotToWeb = [`${client.guilds.cache.map(g => g.
-                memberCount).reduce((a, b) => a + b)}`, `${client.guilds.cache.size.toString()}`];
-            res.send(infoBotToWeb)
-        }), 1000);
 
         //Delete guild if not present  in the bot;
         (await client.getAllGuild()).forEach(async g => {
