@@ -5,7 +5,7 @@ const { Session } = require("ecoledirecte.js");
 require("dotenv").config();
 const ALG = process.env.ALG;
 const unixTime = require('unix-time');
-const api = require("@asgarrrr/ecoledirecteapi");
+const api = require("../Api/index");
 
 module.exports = async client => {
     //Server
