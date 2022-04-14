@@ -4,7 +4,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
     .setName("note")
-    .setDescription("Voire vos notes EcoleDirecte.")
+    .setDescription("Voire ses notes EcoleDirecte.")
     .addNumberOption(option =>
         option.setName("note")
             .setDescription("Compris entre 0 et infinie.")

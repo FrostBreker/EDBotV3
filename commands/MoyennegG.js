@@ -4,7 +4,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
     .setName("moyenne")
-    .setDescription("Voire vos moyennes EcoleDirecte.")
+    .setDescription("Voire ses moyennes EcoleDirecte.")
     .addNumberOption(option =>
         option.setName("moyenne")
             .setDescription("Compris entre 0 et infinie.")

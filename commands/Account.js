@@ -4,7 +4,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
     .setName("compte")
-    .setDescription("Voire votre compte EcoleDirecte.")
+    .setDescription("Afficher son compte EcoleDirecte.")
     .addStringOption(option =>
         option.setName("confidentialités")
             .setDescription("Choisissez votre confidentialité")

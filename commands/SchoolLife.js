@@ -3,8 +3,8 @@ const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
-    .setName("vs")
-    .setDescription("Voire vos retard, sanctions, etc...")
+    .setName("vie-scolaire")
+    .setDescription("Voire ses retards, sanctions, etc...")
     .addNumberOption(option =>
         option.setName("nombre")
             .setDescription("Compris entre 0 et infinie.")

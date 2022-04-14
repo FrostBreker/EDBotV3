@@ -4,7 +4,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
     .setName("top")
-    .setDescription("Voire votre emploi du temps EcoleDirecte.")
+    .setDescription("Faire un top de ses notes EcoleDirecte.")
     .addNumberOption(option =>
         option.setName("top")
             .setDescription("Compris entre 0 et 50.")

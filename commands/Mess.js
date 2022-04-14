@@ -3,8 +3,8 @@ const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
-    .setName("mess")
-    .setDescription("Voire vos message EcoleDirecte.")
+    .setName("messages")
+    .setDescription("Voire ses messages EcoleDirecte.")
     .addNumberOption(option =>
         option.setName("message")
             .setDescription("Compris entre 0 et infinie.")

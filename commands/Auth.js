@@ -2,7 +2,7 @@ const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
-    .setName("auth")
+    .setName("authentication")
     .setDescription("Vous connectez à EcoleDirecte.")
 
 module.exports = {
