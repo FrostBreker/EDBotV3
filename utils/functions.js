@@ -72,12 +72,12 @@ module.exports = async client => {
 
     client.defferWithPrivacy = async (privacy, interaction) => {
         if (!privacy) {
-            return await interaction.deferReply({ ephemeral: true });
+            return await interaction.deferReply({ ephemeral: true }).catch(() => { });
         } else {
             if (privacy === "pv") {
-                return await interaction.deferReply({ ephemeral: true });
+                return await interaction.deferReply({ ephemeral: true }).catch(() => { });
             } else if (privacy === "p") {
-                return await interaction.deferReply({ ephemeral: false });
+                return await interaction.deferReply({ ephemeral: false }).catch(() => { });
             }
         }
     }

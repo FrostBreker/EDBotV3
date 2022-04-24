@@ -3,7 +3,7 @@ const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
-    .setName("vie-scolaire")
+    .setName("schoollife")
     .setDescription("Voire ses retards, sanctions, etc...")
     .addNumberOption(option =>
         option.setName("nombre")

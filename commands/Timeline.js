@@ -3,7 +3,7 @@ const { auth, noHomework } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
-    .setName("timeline")
+    .setName("emploisdutemps")
     .setDescription("Voire votre emploi du temps EcoleDirecte.")
     .addStringOption(option =>
         option.setName("confidentialités")

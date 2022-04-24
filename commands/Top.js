@@ -3,10 +3,10 @@ const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const data = new SlashCommandBuilder()
-    .setName("top")
-    .setDescription("Faire un top de ses notes EcoleDirecte.")
+    .setName("classement")
+    .setDescription("Faire un classement de ses notes EcoleDirecte.")
     .addNumberOption(option =>
-        option.setName("top")
+        option.setName("classement")
             .setDescription("Compris entre 0 et 50.")
             .setRequired(true)
             .setMinValue(0)
