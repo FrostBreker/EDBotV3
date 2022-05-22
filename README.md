@@ -16,4 +16,4 @@ CLIENT_URL=http://localhost:3000
 ```
 Une fois fait il vous suffit d'exécuter la commande `npm run watch` pour lancer en mode de développement.
 
-### N'oubliez pas que le bot n'est disponible en open source pour les contributions et projet personnel il n'est en aucun cas disponible à des fins commerciales.
+### N'oubliez pas que le bot n'est disponible en open source pour les contributions et projet personnel il n'est en aucun cas disponible à des fins commerciales ou visant à nuir au bot en lui même !
