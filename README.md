@@ -2,6 +2,8 @@
 Le BOT ED est un bot discord open source permettant de lier son compte EcoleDirecte à Discord.
 Il est en ligne et peut être invité à cette adresse : https://ecole-directe-site.herokuapp.com/
 
+[![Discord Bots](https://top.gg/api/widget/837639493745246228.svg)(https://top.gg/bot/837639493745246228)
+
 # Instalation pour contribution
 Après avoir cloner le répo executer la commande `npm i`.
 Une foit faire modfier le fichier `config.js` et ajouter un fichier `.env`
