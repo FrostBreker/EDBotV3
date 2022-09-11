@@ -21,7 +21,7 @@ module.exports.add = async (client) => {
             return client.deleteUser(user);
         })
         if (!compte) return;
-        if (compte.type !== "student") return client.deleteUser(user);
+        if (compte.type !== "student") return;
 
         const notes = await compte.getGrades().catch(() => { })
         const homeworks = await compte.getHomework(Date.now(), true).catch(() => { })
