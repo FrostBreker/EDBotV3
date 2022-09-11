@@ -229,4 +229,36 @@ module.exports = async client => {
             (typeof value === "string" && value.trim().length === 0)
         );
     };
+
+    client.getTheDate = () => {
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        let yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        return yyyy + '-' + mm + '-' + dd;
+    }
+
+    client.getDifference = (array1, array2) => {
+        return array1.filter(object1 => {
+            return !array2.some(object2 => {
+                return object1.id === object2.id;
+            });
+        });
+    }
+
+    client.getCanceledClasses = (schedules) => {
+        const canceledClasses = [];
+        for (var i = 0; i < schedules.length; i++) {
+            if (schedules[i]._raw.isAnnule) {
+                canceledClasses.push(schedules[i]);
+            }
+        }
+        return canceledClasses;
+    }
 };

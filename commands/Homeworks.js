@@ -57,7 +57,7 @@ module.exports = {
             .setThumbnail(user.avatarURL())
             .setDescription(`Nombre(s) de devoirs: 0 - ${nbv}\n\n> ${h.job.content.text}\n\n📅 ${h.date ? `<t:${parseInt(Date.parse(h.date) / 1000)}:R>` : "Inconue"}`)
             .setTimestamp()
-            .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
+            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
         interaction.editReply({ embeds: [embedPrincipal] });
     }

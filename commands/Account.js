@@ -65,7 +65,7 @@ module.exports = {
                     inline: false
                 }
             )
-            .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
+            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
         interaction.editReply({ embeds: [embedPrincipal] });
     }

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { baseImageURI } = require("../config");
 
 const data = new SlashCommandBuilder()
     .setName("classement")
@@ -58,7 +59,7 @@ module.exports = {
             } else return 10
         }
         if (client.isEmpty(sortedArray)) {
-            return interaction.editReply({ content: "Une érreur est survenue.", ephemeral: true });
+            return interaction.editReply({ content: "**Aucune note n'a été trouvée.**", ephemeral: true });
         }
 
         sortedArray.length = getTopNumber();
@@ -66,9 +67,9 @@ module.exports = {
 
         const embedPrincipal = new MessageEmbed()
             .setColor(430591)
-            .setThumbnail(user.avatarURL())
+            .setThumbnail(user.avatarURL() || baseImageURI)
             .setTimestamp()
-            .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
+            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
             .setDescription(sortedArray.map((x) => {
                 if (x.value !== 'Abs ') {
                     return `\`${i++}\` **${x.value}**/**${x.outOf}** (${x.subjectName} - **${x.name} - ${x._raw.typeDevoir})`;

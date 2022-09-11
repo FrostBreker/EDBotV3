@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { baseImageURI } = require("../config");
 
 const data = new SlashCommandBuilder()
     .setName("schoollife")
@@ -68,7 +69,7 @@ module.exports = {
         const embedPrincipal = new MessageEmbed()
             .setColor('#25ff')
             .setTitle(`🔔 | VieScolaire de ${user.tag}`)
-            .setThumbnail('https://cdn.discordapp.com/attachments/779466058171154483/842742558354571274/logo_ecole_directe2.jpg')
+            .setThumbnail(user.avatarURL() || baseImageURI)
             .setDescription(`Nombres de retard(s): **0** - **${nbv}**`)
             .setTimestamp()
             .addFields(
@@ -78,7 +79,7 @@ module.exports = {
                 { name: `Motif: `, value: motif },
                 { name: `Justifié: `, value: justifieEd }
             )
-            .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
+            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
         interaction.editReply({ embeds: [embedPrincipal] });
     }

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { auth, noHomework } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { baseImageURI } = require("../config")
 
 const data = new SlashCommandBuilder()
     .setName("emploisdutemps")
@@ -49,13 +50,13 @@ module.exports = {
         const embedPrincipal = new MessageEmbed()
             .setColor(timeline[0].color)
             .setTitle(`🔔 | Emplois du temps du: ${date[0]}`)
-            .setThumbnail(user.avatarURL() || 'https://cdn.discordapp.com/attachments/779466058171154483/842742558354571274/logo_ecole_directe2.jpg')
+            .setThumbnail(user.avatarURL() || baseImageURI)
             .setTimestamp()
-            .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
+            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
             .addField('\u200B', '\u200B');
 
         if (timeline[0].typeCours === "CONGE") {
-            return await interaction.editReply({ embeds: [noHomework()], ephemeral: true });;
+            return await interaction.editReply({ embeds: [noHomework()], ephemeral: true });
         } else {
             for (let i = 0; i < timeline.length; i++) {
                 const startDate = timeline[i].start_date.split(" ");

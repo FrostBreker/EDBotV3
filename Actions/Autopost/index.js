@@ -1,18 +1,10 @@
-const { MessageEmbed } = require('discord.js');
 const CryptoJS = require("crypto-js");
 const _ = require('lodash');
 const { Session } = require("ecoledirecte.js");
 require("dotenv").config();
 const ALG = process.env.ALG;
 globalThis.users = [];
-
-function getDifference(array1, array2) {
-    return array1.filter(object1 => {
-        return !array2.some(object2 => {
-            return object1.id === object2.id;
-        });
-    });
-}
+const { sendNote, sendHomework, sendCanceledClass, sendMessages, sendSLS } = require("./AcionsIndex")
 
 module.exports.add = async (client) => {
     const allUser = await client.getAllUsers();
@@ -33,14 +25,22 @@ module.exports.add = async (client) => {
 
         const notes = await compte.getGrades().catch(() => { })
         const homeworks = await compte.getHomework(Date.now(), true).catch(() => { })
-        if (!notes || !homeworks) return;
+        const schedule = await compte.getTimetable([client.getTheDate(), client.getTheDate()]).catch(() => { })
+        const messages = await compte.getMessages().catch(() => { });
+
+        const assgarCompte = await client.asgarConnect({ id: user.userID });
+        const schoollife = await assgarCompte.getSchoolLife();
 
         users.push(
             {
+                compte: compte,
+                assgarCompte: assgarCompte,
                 userId: user.userID,
                 notes: notes,
                 homeworks: homeworks,
-                compte: compte
+                schedule: client.getCanceledClasses(schedule),
+                messages: messages,
+                schoollife: schoollife
             }
         )
     })
@@ -52,55 +52,25 @@ module.exports.send = async (client) => {
         if (!member) return;
 
         await user.compte.getGrades().then((notes) => {
-            this.sendNotes(member, user, notes, client);
+            sendNote(member, user, notes, client);
         }).catch(() => { })
 
         await user.compte.getHomework(Date.now(), true).then((homeworks) => {
-            this.sendHomeworks(member, user, homeworks, client);
+            sendHomework(member, user, homeworks, client);
         }).catch(() => { })
+
+        await user.compte.getTimetable([client.getTheDate(), client.getTheDate()]).then((schedule) => {
+            sendCanceledClass(member, user, schedule, client);
+        }).catch(() => { })
+
+        await user.compte.getMessages().then((messages) => {
+            sendMessages(member, user, messages, client);
+        }).catch(() => { });
+
+        await user.assgarCompte.getSchoolLife().then((schoollife) => {
+            sendSLS(member, user, schoollife, client);
+        }).catch(() => { });
+
     })
     return true;
-
-}
-
-module.exports.sendNotes = async (member, user, notes, client) => {
-    if (notes) {
-        if (!_.isEqual(user.notes, notes)) {
-            const sortedArray = getDifference(notes, user.notes);
-            sortedArray.map((s) => {
-                const embedPrincipal = new MessageEmbed()
-                    .setColor(430591)
-                    .setTitle(`> 🔔 | Note de ${s.subjectName}`)
-                    .setThumbnail(member.avatarURL() || 'https://cdn.discordapp.com/attachments/779466058171154483/842742558354571274/logo_ecole_directe2.jpg')
-                    .setDescription("<:annonce:962378435815161936> : **" + s.subjectName + "** - **" + s.name + "** - **" + s._raw.typeDevoir + "**\n\n<:stats:962354418660028416> : " + s.value + "/20 (**Coef** : " + s._raw.coef + ")\n\n" + client.getPercent(s.value, s.classAvg, s.outOf) + "\n\n<:planning:959563680398315540> : <t:" + parseInt(Date.parse(s._raw.date) / 1000) + ":R>")
-                    .setTimestamp()
-                    .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
-
-                member.send(embedPrincipal).then(async () => {
-                    await client.updateStats("msg");
-                }).catch(() => { })
-            })
-        }
-    }
-}
-
-module.exports.sendHomeworks = async (member, user, homeworks, client) => {
-    if (homeworks) {
-        if (!_.isEqual(user.homeworks, homeworks)) {
-            const sortedArray = getDifference(homeworks, user.homeworks);
-            sortedArray.map((s) => {
-                const embedPrincipal = new MessageEmbed()
-                    .setColor(430591)
-                    .setTitle(`> 🔔 | Travaille à faire en ${s.subject.name} (${s.teacher})`)
-                    .setThumbnail(user.avatarURL())
-                    .setDescription(`> ${s.job.content.text}\n\n<:planning:959563680398315540> ${s.date ? `<t:${parseInt(Date.parse(s.date) / 1000)}:R>` : "Inconue"}`)
-                    .setTimestamp()
-                    .setFooter({ text: 'EcoleDirecte | 🌐', iconURL: client.user.avatarURL() })
-
-                member.send(embedPrincipal).then(async () => {
-                    await client.updateStats("msg");
-                }).catch(() => { })
-            })
-        }
-    }
 }
