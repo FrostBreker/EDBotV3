@@ -44,7 +44,7 @@ module.exports.add = async (client) => {
                 homeworks: homeworks,
                 schedule: client.getCanceledClasses(schedule),
                 messages: messages,
-                schoollife: schoollife
+                schoollife: schoollife.absencesRetards
             }
         )
     })
@@ -72,7 +72,7 @@ module.exports.send = async (client) => {
         }).catch(() => { });
 
         await user.assgarCompte.getSchoolLife().then((schoollife) => {
-            sendSLS(member, user, schoollife, client);
+            sendSLS(member, user, schoollife.absencesRetards, client);
         }).catch(() => { });
 
     })

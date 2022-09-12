@@ -55,7 +55,7 @@ module.exports = {
             .setColor(430591)
             .setTitle(`> 🔔 | Travaille à faire en ${h.subject.name} (${h.teacher})`)
             .setThumbnail(user.avatarURL())
-            .setDescription(`Nombre(s) de devoirs: 0 - ${nbv}\n\n> ${h.job.content.text}\n\n📅 ${h.date ? `<t:${parseInt(Date.parse(h.date) / 1000)}:R>` : "Inconue"}`)
+            .setDescription(`Nombre(s) de devoirs: 0 - ${nbv}\n\n> ${h.job.content.text ? h.job.content.text : "Contenue inconnue"}\n\n📅 ${h.date ? `<t:${parseInt(Date.parse(h.date) / 1000)}:R>` : "Inconue"}`)
             .setTimestamp()
             .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 

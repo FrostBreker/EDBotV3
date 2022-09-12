@@ -11,7 +11,7 @@ async function sendHomeworks(member, user, homeworks, client) {
                     .setColor(430591)
                     .setTitle(`> 🔔 | Travaille à faire en ${s.subject.name} (${s.teacher})`)
                     .setThumbnail(member.avatarURL() | baseImageURI)
-                    .setDescription(`> ${s.job.content.text}\n\n<:planning:959563680398315540> ${s.date ? `<t:${parseInt(Date.parse(s.date) / 1000)}:R>` : "Inconue"}`)
+                    .setDescription(`> ${s.job.content.text ? s.job.content.text : "Contenue inconnue"}\n\n<:planning:959563680398315540> ${s.date ? `<t:${parseInt(Date.parse(s.date) / 1000)}:R>` : "Inconue"}`)
                     .setTimestamp()
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
