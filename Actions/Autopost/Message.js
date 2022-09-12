@@ -1,8 +1,9 @@
+const { MessageEmbed } = require('discord.js');
 const _ = require('lodash');
 const { baseImageURI } = require("../../config");
 
 async function sendMessage(member, user, messages, client) {
-    if (messages) {
+    if (!client.isEmpty(messages) && !client.isEmpty(user.messages)) {
         if (!_.isEqual(user.messages, messages)) {
             const sortedArray = client.getDifference(messages, user.messages);
             sortedArray.map(async (s) => {

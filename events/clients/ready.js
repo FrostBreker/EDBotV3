@@ -27,7 +27,7 @@ module.exports = {
         });
 
         //Presence
-        setInterval(async () => client.user.setPresence({ activities: [{ name: `ED BOT - ${(await client.getAllGuild()).length} serveurs`, type: 'WATCHING' }], status: 'online' }), 10000);
+        setInterval(async () => client.user.setPresence({ activities: [{ name: `EcoleDirecte servers - ${(await client.getAllGuild()).length} serveurs`, type: 'WATCHING' }], status: 'online' }), 10000);
 
         //Autosend
         await add(client);

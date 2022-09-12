@@ -253,6 +253,7 @@ module.exports = async client => {
     }
 
     client.getCanceledClasses = (schedules) => {
+        if (client.isEmpty(schedules)) return [];
         const canceledClasses = [];
         for (var i = 0; i < schedules.length; i++) {
             if (schedules[i]._raw.isAnnule) {

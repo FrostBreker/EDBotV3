@@ -1,6 +1,7 @@
 const CryptoJS = require("crypto-js");
 const _ = require('lodash');
 const { Session } = require("ecoledirecte.js");
+const api = require("../../Api/index");
 require("dotenv").config();
 const ALG = process.env.ALG;
 globalThis.users = [];
@@ -18,9 +19,13 @@ module.exports.add = async (client) => {
 
         const session = new Session(user.username, passwordEC);
         const compte = await session.login().catch(() => {
-            return client.deleteUser(user);
+            return;
         })
-        if (!compte) return;
+        const sessionAsg = new api.Session();
+        const compteAsgar = await sessionAsg.login(user.username, passwordEC).catch(() => {
+            return;
+        })
+        if (!compte || !compteAsgar) return;
         if (compte.type !== "student") return;
 
         const notes = await compte.getGrades().catch(() => { })
@@ -28,13 +33,12 @@ module.exports.add = async (client) => {
         const schedule = await compte.getTimetable([client.getTheDate(), client.getTheDate()]).catch(() => { })
         const messages = await compte.getMessages().catch(() => { });
 
-        const assgarCompte = await client.asgarConnect({ id: user.userID });
-        const schoollife = await assgarCompte.getSchoolLife();
+        const schoollife = await compteAsgar.getSchoolLife();
 
         users.push(
             {
                 compte: compte,
-                assgarCompte: assgarCompte,
+                assgarCompte: compteAsgar,
                 userId: user.userID,
                 notes: notes,
                 homeworks: homeworks,

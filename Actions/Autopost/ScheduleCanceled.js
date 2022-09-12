@@ -1,8 +1,9 @@
 const _ = require('lodash');
+const { MessageEmbed } = require('discord.js');
 const { baseImageURI } = require("../../config");
 
 async function sendCanceledClass(member, user, schedule, client) {
-    if (schedule) {
+    if (!client.isEmpty(schedule) && !client.isEmpty(user.schedule)) {
         if (!_.isEqual(user.schedule, client.getCanceledClasses(schedule))) {
             const sortedArray = client.getDifference(client.getCanceledClasses(schedule), user.schedule);
             sortedArray.map((s) => {
