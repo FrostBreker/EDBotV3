@@ -53,26 +53,26 @@ module.exports.add = async (client) => {
 module.exports.send = async (client) => {
     users.map(async (user) => {
         const member = await client.users.fetch(user.userId).catch(() => { })
-        if (!member) return;
+        if (client.isEmpty(member)) return;
 
-        await user.compte.getGrades().then((notes) => {
-            sendNote(member, user, notes, client);
+        await user.compte.getGrades().then(async (notes) => {
+            await sendNote(member, user, notes, client);
         }).catch(() => { })
 
-        await user.compte.getHomework(Date.now(), true).then((homeworks) => {
-            sendHomework(member, user, homeworks, client);
+        await user.compte.getHomework(Date.now(), true).then(async (homeworks) => {
+            await sendHomework(member, user, homeworks, client);
         }).catch(() => { })
 
-        await user.compte.getTimetable([client.getTheDate(), client.getTheDate()]).then((schedule) => {
-            sendCanceledClass(member, user, schedule, client);
+        await user.compte.getTimetable([client.getTheDate(), client.getTheDate()]).then(async (schedule) => {
+            await sendCanceledClass(member, user, schedule, client);
         }).catch(() => { })
 
-        await user.compte.getMessages().then((messages) => {
-            sendMessages(member, user, messages, client);
+        await user.compte.getMessages().then(async (messages) => {
+            await sendMessages(member, user, messages, client);
         }).catch(() => { });
 
-        await user.assgarCompte.getSchoolLife().then((schoollife) => {
-            sendSLS(member, user, schoollife.absencesRetards, client);
+        await user.assgarCompte.getSchoolLife().then(async (schoollife) => {
+            await sendSLS(member, user, schoollife.absencesRetards, client);
         }).catch(() => { });
 
     })
