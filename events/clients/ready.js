@@ -31,11 +31,9 @@ module.exports = {
 
         //Autosend
         await add(client);
-        cron.schedule('*/1 * * * *', async () => {
+        cron.schedule('*/15 * * * *', async () => {
             console.log("[INFO] Cron job started");
-            console.log(users);
             if (!client.isEmpty(users)) {
-                console.log("[INFO] Sending autoposts");
                 await send(client);
                 await add(client);
             } else {

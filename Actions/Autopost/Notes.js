@@ -2,7 +2,6 @@ const { MessageEmbed } = require('discord.js');
 const _ = require('lodash');
 
 function sendGrades(member, user, notes, client) {
-    console.log(`[INFO] Started sending notes to ${user.userId}`);
     if (!client.isEmpty(notes) && !client.isEmpty(user.notes)) {
         if (!_.isEqual(user.notes, notes)) {
             const sortedArray = client.getDifference(notes, user.notes);

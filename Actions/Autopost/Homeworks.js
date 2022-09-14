@@ -2,7 +2,6 @@ const { MessageEmbed } = require('discord.js');
 const _ = require('lodash');
 
 function sendHomeworks(member, user, homeworks, client) {
-    console.log(`[INFO] Started sending homeworks to ${user.userId}`);
     if (!client.isEmpty(homeworks) && !client.isEmpty(user.homeworks)) {
         if (!_.isEqual(user.homeworks, homeworks)) {
             const sortedArray = client.getDifference(homeworks, user.homeworks);

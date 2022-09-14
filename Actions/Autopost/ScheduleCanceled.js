@@ -2,7 +2,6 @@ const _ = require('lodash');
 const { MessageEmbed } = require('discord.js');
 
 function sendCanceledClass(member, user, schedule, client) {
-    console.log(`[INFO] Started sending canceled classes to ${user.userId}`);
     if (!client.isEmpty(schedule) && !client.isEmpty(user.schedule)) {
         if (!_.isEqual(user.schedule, client.getCanceledClasses(schedule))) {
             const sortedArray = client.getDifference(client.getCanceledClasses(schedule), user.schedule);
@@ -20,7 +19,7 @@ function sendCanceledClass(member, user, schedule, client) {
                     )
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
-                return await member.send(embedPrincipal).then(async () => {
+                return await member.send({ embeds: [embedPrincipal] }).then(async () => {
                     console.log(`[INFO] Canceled class sent to ${user.userId}`);
                     await client.updateStats("msg");
                 }).catch(() => { })

@@ -2,7 +2,6 @@ const { MessageEmbed } = require('discord.js');
 const _ = require('lodash');
 
 function sendSL(member, user, schoollife, client) {
-    console.log(`[INFO] Started sending school life to ${user.userId}`);
     if (!client.isEmpty(schoollife) && !client.isEmpty(user.schoollife)) {
         if (!_.isEqual(user.schoollife, schoollife)) {
             const sortedArray = client.getDifference(schoollife, user.schoollife);
@@ -15,7 +14,7 @@ function sendSL(member, user, schoollife, client) {
                     .setTimestamp()
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
-                return await member.send(embedPrincipal).then(async () => {
+                return await member.send({ embeds: [embedPrincipal] }).then(async () => {
                     console.log(`[INFO] School life sent to ${user.userId}`);
                     await client.updateStats("msg");
                 }).catch(() => { })
