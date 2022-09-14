@@ -5,7 +5,7 @@ const api = require("../../Api/index");
 require("dotenv").config();
 const ALG = process.env.ALG;
 globalThis.users = [];
-const { sendNote, sendHomework, sendCanceledClass, sendMessages, sendSLS } = require("./AcionsIndex")
+const { sendNote, sendHomework, sendCanceledClass, sendMessages, sendSLS } = require("./AcionsIndex");
 
 module.exports.add = async (client) => {
     const allUser = await client.getAllUsers();
@@ -51,30 +51,33 @@ module.exports.add = async (client) => {
 }
 
 module.exports.send = async (client) => {
-    users.map(async (user) => {
-        const member = await client.users.fetch(user.userId).catch(() => { })
-        if (client.isEmpty(member)) return;
+    console.log("[INFO] Sending");
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        async function sendAutopost() {
+            const member = await client.users.fetch(user.userId).catch(() => { })
+            if (client.isEmpty(member)) return;
 
-        await user.compte.getGrades().then(async (notes) => {
-            await sendNote(member, user, notes, client);
-        }).catch(() => { })
+            await user.compte.getGrades().then((notes) => {
+                sendNote(member, user, notes, client);
+            }).catch(() => { })
 
-        await user.compte.getHomework(Date.now(), true).then(async (homeworks) => {
-            await sendHomework(member, user, homeworks, client);
-        }).catch(() => { })
+            await user.compte.getHomework(Date.now(), true).then((homeworks) => {
+                sendHomework(member, user, homeworks, client);
+            }).catch(() => { })
 
-        await user.compte.getTimetable([client.getTheDate(), client.getTheDate()]).then(async (schedule) => {
-            await sendCanceledClass(member, user, schedule, client);
-        }).catch(() => { })
+            await user.compte.getTimetable([client.getTheDate(), client.getTheDate()]).then((schedule) => {
+                sendCanceledClass(member, user, schedule, client);
+            }).catch(() => { })
 
-        await user.compte.getMessages().then(async (messages) => {
-            await sendMessages(member, user, messages, client);
-        }).catch(() => { });
+            await user.compte.getMessages().then((messages) => {
+                sendMessages(member, user, messages, client);
+            }).catch(() => { });
 
-        await user.assgarCompte.getSchoolLife().then(async (schoollife) => {
-            await sendSLS(member, user, schoollife.absencesRetards, client);
-        }).catch(() => { });
-
-    })
-    return true;
+            await user.assgarCompte.getSchoolLife().then((schoollife) => {
+                sendSLS(member, user, schoollife.absencesRetards, client);
+            }).catch(() => { });
+        }
+        sendAutopost()
+    }
 }

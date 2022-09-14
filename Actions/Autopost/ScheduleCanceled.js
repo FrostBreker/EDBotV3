@@ -1,18 +1,18 @@
 const _ = require('lodash');
 const { MessageEmbed } = require('discord.js');
-const { baseImageURI } = require("../../config");
 
-async function sendCanceledClass(member, user, schedule, client) {
+function sendCanceledClass(member, user, schedule, client) {
+    console.log(`[INFO] Started sending canceled classes to ${user.userId}`);
     if (!client.isEmpty(schedule) && !client.isEmpty(user.schedule)) {
         if (!_.isEqual(user.schedule, client.getCanceledClasses(schedule))) {
             const sortedArray = client.getDifference(client.getCanceledClasses(schedule), user.schedule);
-            sortedArray.map((s) => {
+            sortedArray.map(async (s) => {
                 var days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
                 var months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'decembre'];
                 const embedPrincipal = new MessageEmbed()
                     .setColor(430591)
                     .setTitle(`> 📅 | **Cours de ${s.subject} annulé pour le ${days[new Date(s.startDate).getDay()]} ${new Date(s.startDate).getDate() < 10 ? 0 + new Date(s.startDate).getDate() : new Date(s.startDate).getDate()} ${months[new Date(s.startDate).getMonth()]}**`)
-                    .setThumbnail(member.avatarURL() || baseImageURI)
+                    .setThumbnail(member.avatarURL() || client.user.avatarURL())
                     .setTimestamp()
                     .addFields(
                         { name: "👩‍🏫", value: `**${s.teacher}**`, inline: true },
@@ -20,7 +20,8 @@ async function sendCanceledClass(member, user, schedule, client) {
                     )
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
-                member.send(embedPrincipal).then(async () => {
+                return await member.send(embedPrincipal).then(async () => {
+                    console.log(`[INFO] Canceled class sent to ${user.userId}`);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })
