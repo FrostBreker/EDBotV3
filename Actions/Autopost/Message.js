@@ -18,7 +18,7 @@ function sendMessage(member, user, messages, client) {
                     .setColor(430591)
                     .setTitle(`> 🔔 | Message de ${s._raw.from.name}`)
                     .setThumbnail(member.avatarURL() || client.user.avatarURL())
-                    .setDescription("\n📢 : **" + s._raw.subject + "**\n\n📚  : **" + ref + "**\n\n📅 : " + "<t:" + parseInt(Date.parse(s.date) / 1000) + ":R>")
+                    .setDescription("\n📢 : **" + s._raw.subject + "**\n\n📚  : **" + ref + "**\n\n<:planning:1020044801409826816> : " + "<t:" + parseInt(Date.parse(s.date) / 1000) + ":R>")
                     .setTimestamp()
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 

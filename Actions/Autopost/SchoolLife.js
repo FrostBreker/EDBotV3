@@ -10,7 +10,7 @@ function sendSL(member, user, schoollife, client) {
                     .setColor(430591)
                     .setTitle(`> 🔔 | ${vs.type} de ${member.user.tag}`)
                     .setThumbnail(member.avatarURL() || client.user.avatarURL())
-                    .setDescription("📢 :" + vs.motif + "\n📚 :" + vs.content + "\n📅 :" + vs.displayDate + "\n🕒 :" + vs.libelle + "\n📝 :" + vs.justifie ? "Oui" : "Non" + "**")
+                    .setDescription("📢 :" + vs.motif + "\n📚 :" + vs.content + "\n<:planning:1020044801409826816> :" + vs.displayDate + "\n🕒 :" + vs.libelle + "\n📝 :" + vs.justifie ? "Oui" : "Non" + "**")
                     .setTimestamp()
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 

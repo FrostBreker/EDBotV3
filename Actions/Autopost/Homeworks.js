@@ -10,14 +10,14 @@ function sendHomeworks(member, user, homeworks, client) {
                     .setColor(430591)
                     .setTitle(`> 🔔 | Travaille à faire en ${s.subject.name} (${s.teacher})`)
                     .setThumbnail(member.avatarURL() || client.user.avatarURL())
-                    .setDescription(`> ${s.job !== undefined ? s.job.content.text : "Contenue inconnue"}\n\n<:planning:959563680398315540> ${s.date ? `<t:${parseInt(Date.parse(s.date) / 1000)}:R>` : "Inconue"}`)
+                    .setDescription(`> ${s.job !== undefined ? s.job.content.text : "Contenue inconnue"}\n\n<:planning:1020044801409826816> ${s.date ? `<t:${parseInt(Date.parse(s.date) / 1000)}:R>` : "Inconue"}`)
                     .setTimestamp()
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
                 return await member.send({ embeds: [embedPrincipal] }).then(() => {
                     console.log(`[INFO] Homeworks sent to ${user.userId}`);
                     return client.updateStats("msg");
-                }).catch((err) => { console.log(err); })
+                }).catch(() => { })
             })
         }
     }
