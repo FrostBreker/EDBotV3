@@ -51,7 +51,6 @@ module.exports.add = async (client) => {
 }
 
 module.exports.send = async (client) => {
-    console.log("[INFO] Sending");
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         async function sendAutopost() {

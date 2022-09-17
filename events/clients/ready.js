@@ -1,5 +1,6 @@
 const cron = require('node-cron');
 const { add, send } = require("../../Actions/Autopost/index");
+const app = require("../../main");
 
 module.exports = {
     name: "ready",
@@ -32,14 +33,19 @@ module.exports = {
         //Autosend
         await add(client);
         cron.schedule('*/15 * * * *', async () => {
-            console.log("[INFO] Cron job started");
             if (!client.isEmpty(users)) {
                 await send(client);
                 await add(client);
             } else {
-                console.log("[INFO] No users found");
                 add(client);
             }
+        });
+
+        app.listen(process.env.PORT, () => {
+            console.log(`${client.timestampParser()} => Express server is connected on port: ${process.env.PORT}`)
+        });
+        app.use("/api", async (req, res) => {
+            res.status(200).json(await client.getStats());
         });
 
         //Bot login

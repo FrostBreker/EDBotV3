@@ -1,9 +1,23 @@
 const { Client, Collection } = require("discord.js");
 require("dotenv").config();
 const TOKEN = process.env.TOKEN;
+const express = require('express');
+const cors = require("cors");
+
+const app = express();
+
+const corsOptions = {
+    origin: [`${process.env.CLIENT_URL}`, "http://localhost:3000"],
+    credentials: true,
+    allowedHeaders: ["sessionId", "Content-Type", "Authorization", "authorization"],
+    exposedHeaders: ["sessionId"],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+};
+app.use(cors(corsOptions));
 
 const client = new Client({ intents: 4097 });
-module.exports = client;
+module.exports = app;
 
 //Setup DB
 require("./utils/functions")(client);

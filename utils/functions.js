@@ -262,4 +262,11 @@ module.exports = async client => {
         }
         return canceledClasses;
     }
+
+    client.getStats = async () => {
+        return {
+            users: await client.guilds.cache.map(g => g.memberCount).reduce((a, b) => a + b),
+            guilds: await client.guilds.cache.size
+        }
+    }
 };

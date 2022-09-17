@@ -15,7 +15,7 @@ function sendSL(member, user, schoollife, client) {
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
                 return await member.send({ embeds: [embedPrincipal] }).then(async () => {
-                    console.log(`[INFO] School life sent to ${user.userId}`);
+                    console.log(`${client.timestampParser()} => [INFO] School life sent to ${user.userId}`);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })
