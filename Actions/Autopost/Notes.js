@@ -15,7 +15,7 @@ function sendGrades(member, user, notes, client) {
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
                 return await member.send({ embeds: [embedPrincipal] }).then(async () => {
-                    console.log(`${client.timestampParser()} => [INFO] Notes sent to ${user.userId}`);
+                    client.logger(`${client.timestampParser()} => [INFO] Notes sent to ${user.userId}`);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })

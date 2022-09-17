@@ -12,10 +12,10 @@ module.exports = async client => {
         const cmd = require(commandFile);
         const dd = cmd.data.toJSON();
         if (!dd.name || !cmd.description) {
-            return console.log(`------\nCommandes non-chargée: pas de nom/desciption\nFichier --> ${commandFile}`);
+            return client.logger(`------\nCommandes non-chargée: pas de nom/desciption\nFichier --> ${commandFile}`);
         }
         client.commands.set(dd.name, cmd)
-        console.log(`Commande chargée [🛢️] : ${dd.name}`, "\n_______________________________________")
+        client.logger(`Commande chargée [🛢️] : ${dd.name}`, "\n_______________________________________")
     });
 
     const commands = [];
@@ -30,14 +30,14 @@ module.exports = async client => {
 
     (async () => {
         try {
-            console.log('Started refreshing application (/) commands.');
+            client.logger('Started refreshing application (/) commands.');
 
             await rest.put(
                 Routes.applicationCommands(clientId),
                 { body: commands },
             );
 
-            console.log('Successfully reloaded application (/) commands.');
+            client.logger('Successfully reloaded application (/) commands.');
         } catch (error) {
             console.error(error);
         }

@@ -15,7 +15,7 @@ function sendHomeworks(member, user, homeworks, client) {
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
                 return await member.send({ embeds: [embedPrincipal] }).then(() => {
-                    console.log(`${client.timestampParser()} => [INFO] Homeworks sent to ${user.userId}`);
+                    client.logger(`${client.timestampParser()} => [INFO] Homeworks sent to ${user.userId}`);
                     return client.updateStats("msg");
                 }).catch(() => { })
             })

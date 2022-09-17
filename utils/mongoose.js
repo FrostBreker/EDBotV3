@@ -3,7 +3,7 @@ require('dotenv').config();
 const DBCONECTION = process.env.DBCONECTION;
 
 module.exports = {
-    init: (date) => {
+    init: (date, client) => {
         const mongOptions = {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -17,6 +17,6 @@ module.exports = {
 
         mongoose.connect(DBCONECTION, mongOptions);
         mongoose.Promise = global.Promise;
-        mongoose.connection.on("connected", () => console.log(`${date} => MongoDB connected!`));
+        mongoose.connection.on("connected", () => client.logger(`${date} => MongoDB connected!`));
     }
 }

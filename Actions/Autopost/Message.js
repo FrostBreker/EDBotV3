@@ -23,7 +23,7 @@ function sendMessage(member, user, messages, client) {
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
                 return await member.send({ embeds: [embedPrincipal] }).then(async () => {
-                    console.log(`${client.timestampParser()} => [INFO] Messages sent to ${user.userId}`);
+                    client.logger(`${client.timestampParser()} => [INFO] Messages sent to ${user.userId}`);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })

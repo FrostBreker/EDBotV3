@@ -7,7 +7,7 @@ module.exports = async client => {
         const event = require(eventFile);
 
         if (!eventsList.includes(event.name) || !event.name) {
-            return console.log(`------\nEvenement non-déclenchée: erreur de typo (ou pas de nom)\nFichier --> ${eventFile}`);
+            return client.logger(`------\nEvenement non-déclenchée: erreur de typo (ou pas de nom)\nFichier --> ${eventFile}`);
         }
 
         if (event.once) {
@@ -16,7 +16,7 @@ module.exports = async client => {
             client.on(event.name, (...args) => event.execute(client, ...args));
         }
 
-        console.log(`events Chargé [🛄] : ${event.name}`);
+        client.logger(`events Chargé [🛄] : ${event.name}`);
 
     })
 }

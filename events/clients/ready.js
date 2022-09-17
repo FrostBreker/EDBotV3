@@ -42,14 +42,14 @@ module.exports = {
         });
 
         app.listen(process.env.PORT, () => {
-            console.log(`${client.timestampParser()} => Express server is connected on port: ${process.env.PORT}`)
+            client.logger(`${client.timestampParser()} => Express server is connected on port: ${process.env.PORT}`)
         });
         app.use("/api", async (req, res) => {
             res.status(200).json(await client.getStats());
         });
 
         //Bot login
-        console.log(`${client.timestampParser()} => ${client.user.tag} with ${client.guilds.cache.map(g => g.
+        client.logger(`${client.timestampParser()} => ${client.user.tag} with ${client.guilds.cache.map(g => g.
             memberCount).reduce((a, b) => a + b)} users!`)
     }
 }

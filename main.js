@@ -3,6 +3,25 @@ require("dotenv").config();
 const TOKEN = process.env.TOKEN;
 const express = require('express');
 const cors = require("cors");
+const fs = require("fs");
+
+const getDateTime = () => {
+    let date = new Date();
+    let hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+    let min = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+    let sec = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+    let day = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+    return year + "-" + month + "-" + day + "-" + hour + "-" + min + "-" + sec;
+}
+
+fs.writeFile(`logs/${getDateTime()}.txt`, '', (err) => { })
 
 const app = express();
 
@@ -22,16 +41,16 @@ module.exports = app;
 //Setup DB
 require("./utils/functions")(client);
 client.mongoose = require("./utils/mongoose");
-client.mongoose.init(client.timestampParser());
+client.mongoose.init(client.timestampParser(), client);
 //Handler and Commands
 client.commands = new Collection();
 ['EventUtil', "CommandUtil"].forEach(handler => { require(`./utils/handlers/${handler}`)(client) });
 
 //Check error
-process.on("exit", code => { console.log(`Le processus s'est arrêté avec le code: ${code}!`); });
-process.on("uncaughtException", (err, origin) => { console.log(`uncaughtException: ${err}`, `Origine: ${origin}`); });
-process.on("unhandledRejection", (reason, promise) => { console.log(`UNHANDLED_REJECTION: ${reason}\n--------\n`, promise); });
-process.on("warning", (...args) => { console.log(...args); });
+process.on("exit", code => { client.logger(`Le processus s'est arrêté avec le code: ${code}!`); });
+process.on("uncaughtException", (err, origin) => { client.logger(`uncaughtException: ${err}`, `Origine: ${origin}`); });
+process.on("unhandledRejection", (reason, promise) => { client.logger(`UNHANDLED_REJECTION: ${reason}\n--------\n`, promise); });
+process.on("warning", (...args) => { client.logger(...args); });
 
 //Login
 client.login(TOKEN);

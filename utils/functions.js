@@ -6,6 +6,7 @@ require("dotenv").config();
 const ALG = process.env.ALG;
 const unixTime = require('unix-time');
 const api = require("../Api/index");
+const fs = require("fs");
 
 module.exports = async client => {
     //Server
@@ -25,7 +26,7 @@ module.exports = async client => {
 
         let doc = await Guild.findOneAndUpdate(filter, update, {
             new: true
-        }).then(g => console.log(`${client.timestampParser()} => Update d'un serveur => ${g.guildName}`))
+        }).then(g => client.logger(`${client.timestampParser()} => Update d'un serveur => ${g.guildName}`))
     }
 
     client.createGuild = async g => {
@@ -33,12 +34,12 @@ module.exports = async client => {
         if (client.isEmpty(data)) {
             const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, { guildID: g.id, guildName: g.name, ownerId: g.ownerId });
             const createGuild = await new Guild(merged);
-            return createGuild.save().then(g => console.log(`${client.timestampParser()} => Nouveau serveur => ${g.guildName}`));
+            return createGuild.save().then(g => client.logger(`${client.timestampParser()} => Nouveau serveur => ${g.guildName}`));
         }
     }
 
     client.deleteGuild = async g => {
-        await Guild.deleteOne({ guildID: g.id }).exec().then(() => console.log(`${client.timestampParser()} => Suppression d'un serveur => ${g.name}`));
+        await Guild.deleteOne({ guildID: g.id }).exec().then(() => client.logger(`${client.timestampParser()} => Suppression d'un serveur => ${g.name}`));
     }
     //User
     client.getUser = async user => {
@@ -52,7 +53,7 @@ module.exports = async client => {
     };
 
     client.deleteUser = async user => {
-        await User.deleteOne({ userID: user.userID }).exec().then(() => console.log(`${client.timestampParser()} => Utilisateur suprimée => ${user.pseudo}`));
+        await User.deleteOne({ userID: user.userID }).exec().then(() => client.logger(`${client.timestampParser()} => Utilisateur suprimée => ${user.pseudo}`));
     };
 
     //ED
@@ -127,7 +128,7 @@ module.exports = async client => {
                     async function creatingNewStats() {
                         const merged = Object.assign({ _id: mongoose.Types.ObjectId(), numberOfRequest: 1 })
                         const createStats = await new Stats(merged);
-                        createStats.save().then(async g => console.log(`${client.timestampParser()} => New stats => ${g._id}`) &&
+                        createStats.save().then(async g => client.logger(`${client.timestampParser()} => New stats => ${g._id}`) &&
                             await Stats.findOneAndUpdate(
                                 { _id: g._id },
                                 {
@@ -138,8 +139,8 @@ module.exports = async client => {
                                 },
                                 { new: true, upsert: true, setDefaultsOnInsert: true },
                                 (err, docs) => {
-                                    if (!err) return console.log(`${client.timestampParser()} => Request updated ${docs.numberOfRequest}`);
-                                    if (err) return console.log(err);
+                                    if (!err) return client.logger(`${client.timestampParser()} => Request updated ${docs.numberOfRequest}`);
+                                    if (err) return client.logger(err);
                                 }
                             )
                         );
@@ -159,8 +160,8 @@ module.exports = async client => {
                                 },
                                 { new: true, upsert: true, setDefaultsOnInsert: true },
                                 (err, docs) => {
-                                    if (!err) return console.log(`${client.timestampParser()} => Message sent number updated --> ${docs.numberOfMessages}`);
-                                    if (err) return console.log(err);
+                                    if (!err) return client.logger(`${client.timestampParser()} => Message sent number updated --> ${docs.numberOfMessages}`);
+                                    if (err) return client.logger(err);
                                 }
                             ).clone()
                         } else {
@@ -173,8 +174,8 @@ module.exports = async client => {
                                 },
                                 { new: true, upsert: true, setDefaultsOnInsert: true },
                                 (err, docs) => {
-                                    if (!err) return console.log(`${client.timestampParser()} => Actions request updated --> ${docs.numberOfRequest}`);
-                                    if (err) return console.log(err);
+                                    if (!err) return client.logger(`${client.timestampParser()} => Actions request updated --> ${docs.numberOfRequest}`);
+                                    if (err) return client.logger(err);
                                 }
                             ).clone()
                         }
@@ -182,7 +183,7 @@ module.exports = async client => {
                     mergedStats();
                 }
             }
-            else console.log("Error to get data : " + err);
+            else client.logger("Error to get data : " + err);
         }).sort({ createdAt: -1 });
     }
 
@@ -268,5 +269,14 @@ module.exports = async client => {
             users: await client.guilds.cache.map(g => g.memberCount).reduce((a, b) => a + b),
             guilds: await client.guilds.cache.size
         }
+    }
+
+    client.logger = log => {
+        const files = fs.readdirSync("logs");
+        const fileName = files[files.length - 1];
+        fs.appendFile(`logs/${fileName}`, `${log}\n`, (err) => {
+            if (!err) return console.log(log);
+            console.log(err);
+        })
     }
 };
