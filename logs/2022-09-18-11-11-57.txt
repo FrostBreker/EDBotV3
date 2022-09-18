@@ -1,0 +1,189 @@
+Commande chargée [🛢️] : compte
+Commande chargée [🛢️] : authentication
+Commande chargée [🛢️] : devoir
+Commande chargée [🛢️] : moyenne
+Commande chargée [🛢️] : note
+Commande chargée [🛢️] : schoollife
+Commande chargée [🛢️] : emploisdutemps
+Commande chargée [🛢️] : classement
+Started refreshing application (/) commands.
+Commande chargée [🛢️] : messages
+events Chargé [🛄] : ready
+events Chargé [🛄] : guildCreate
+events Chargé [🛄] : guildDelete
+events Chargé [🛄] : interactionCreate
+events Chargé [🛄] : messageCreate
+18/09/2022, 11:11:57 => MongoDB connected!
+18/09/2022, 11:11:59 => EcoleDirecte#3996 with 21072 users!
+18/09/2022, 11:11:59 => Express server is connected on port: 26065
+18/09/2022, 11:11:59 => Suppression d'un serveur => ѴΛĿT
+18/09/2022, 11:11:59 => Nouveau serveur => mes bot
+18/09/2022, 11:11:59 => Nouveau serveur => 6e A
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de simnJS
+18/09/2022, 11:11:59 => Nouveau serveur => Mochon's Family
+18/09/2022, 11:11:59 => Nouveau serveur => School
+18/09/2022, 11:11:59 => Nouveau serveur => EcoleDiscord
+18/09/2022, 11:11:59 => Nouveau serveur => Open - All
+18/09/2022, 11:11:59 => Nouveau serveur => random gae shit
+18/09/2022, 11:11:59 => Nouveau serveur => SIO1
+18/09/2022, 11:11:59 => Nouveau serveur => 1perfect serveur
+18/09/2022, 11:11:59 => Nouveau serveur => QueLaMif
+18/09/2022, 11:11:59 => Nouveau serveur => general server
+18/09/2022, 11:11:59 => Nouveau serveur => astra 9
+18/09/2022, 11:11:59 => Nouveau serveur => EDDD
+18/09/2022, 11:11:59 => Nouveau serveur => Glicht for Gta 5 online
+18/09/2022, 11:11:59 => Nouveau serveur => gta5
+18/09/2022, 11:11:59 => Nouveau serveur => groupe de potes
+18/09/2022, 11:11:59 => Nouveau serveur => Les Loulous
+18/09/2022, 11:11:59 => Nouveau serveur => AZERTY
+18/09/2022, 11:11:59 => Nouveau serveur => EL DEVOIR
+18/09/2022, 11:11:59 => Nouveau serveur => 3°E
+18/09/2022, 11:11:59 => Nouveau serveur => @here
+18/09/2022, 11:11:59 => Nouveau serveur => 4e5 Brexit
+18/09/2022, 11:11:59 => Nouveau serveur => École Directe
+18/09/2022, 11:11:59 => Nouveau serveur => College les dines chien
+18/09/2022, 11:11:59 => Nouveau serveur => Multi Recidivisme
+18/09/2022, 11:11:59 => Nouveau serveur => Надежды нет
+18/09/2022, 11:11:59 => Nouveau serveur => Fnaf / Roblox
+18/09/2022, 11:11:59 => Nouveau serveur => 🚩LaSquad📌
+18/09/2022, 11:11:59 => Nouveau serveur => Sioteam privé
+18/09/2022, 11:11:59 => Nouveau serveur => Tototoma00
+18/09/2022, 11:11:59 => Nouveau serveur => Vinted Monitor
+18/09/2022, 11:11:59 => Nouveau serveur => Saint Gab'
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Tom💻3
+18/09/2022, 11:11:59 => Nouveau serveur => Print 3D
+18/09/2022, 11:11:59 => Nouveau serveur => 2°2 pierre termier
+18/09/2022, 11:11:59 => Nouveau serveur => Likerz Test Server
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur école dirècte
+18/09/2022, 11:11:59 => Nouveau serveur => Mon bureau 📚✨
+18/09/2022, 11:11:59 => Nouveau serveur => anime team
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de wahid
+18/09/2022, 11:11:59 => Nouveau serveur => 5°2
+18/09/2022, 11:11:59 => Nouveau serveur => 2H Saint-François
+18/09/2022, 11:11:59 => Nouveau serveur => Memory
+18/09/2022, 11:11:59 => Nouveau serveur => études et classe
+18/09/2022, 11:11:59 => Nouveau serveur => P D
+18/09/2022, 11:11:59 => Nouveau serveur => 4ème6
+18/09/2022, 11:11:59 => Nouveau serveur => Classe de 3°5
+18/09/2022, 11:11:59 => Nouveau serveur => Education Purposes
+18/09/2022, 11:11:59 => Nouveau serveur => Collège (Sacré-Coeur)
+18/09/2022, 11:11:59 => Nouveau serveur => Support de Francais
+18/09/2022, 11:11:59 => Nouveau serveur => H4X0R 1337 DOX ISP WTF !!NO JOIN!!
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Sir Jahn
+18/09/2022, 11:11:59 => Nouveau serveur => 🅥 ⚡𝚂𝚊𝚍 𝙶𝚊𝚖𝚎𝚛𝚜 𝚟𝟸.𝟶™⚡
+18/09/2022, 11:11:59 => Nouveau serveur => École Directe
+18/09/2022, 11:11:59 => Nouveau serveur => 4ème F
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur test
+18/09/2022, 11:11:59 => Nouveau serveur => AndrozDev
+18/09/2022, 11:11:59 => Nouveau serveur => BTS SIO
+18/09/2022, 11:11:59 => Nouveau serveur => Collège Quatre Nations
+18/09/2022, 11:11:59 => Nouveau serveur => L'Ekip
+18/09/2022, 11:11:59 => Nouveau serveur => bouteilleDeau provenant de 6eme hermes
+18/09/2022, 11:11:59 => Nouveau serveur => \\
+18/09/2022, 11:11:59 => Nouveau serveur => TSS TEST
+18/09/2022, 11:11:59 => Nouveau serveur => Ꮲⳙⲛⳟʜ🥊
+18/09/2022, 11:11:59 => Nouveau serveur => ʷᵉ ᵃʳᵉ ๖ۣۜŦhe ๖ۣۜDemons|God
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de fdanger
+18/09/2022, 11:11:59 => Nouveau serveur => Test bot
+18/09/2022, 11:11:59 => Nouveau serveur => Le domaine des arabes
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de pl
+18/09/2022, 11:11:59 => Nouveau serveur => 1ere SN
+18/09/2022, 11:11:59 => Nouveau serveur => test
+18/09/2022, 11:11:59 => Nouveau serveur => 1ere G (les bg)
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de 669_NeyKoo
+18/09/2022, 11:11:59 => Nouveau serveur => serveur1ecole
+18/09/2022, 11:11:59 => Nouveau serveur => My Buisness
+18/09/2022, 11:11:59 => Nouveau serveur => Survyvor
+18/09/2022, 11:11:59 => Nouveau serveur => Gg
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de miop
+18/09/2022, 11:11:59 => Nouveau serveur => NSI - Linux
+18/09/2022, 11:11:59 => Nouveau serveur => les 201
+18/09/2022, 11:11:59 => Nouveau serveur => Les bg de Saint Gab
+18/09/2022, 11:11:59 => Nouveau serveur => Saint Joseph - Serveur Discord
+18/09/2022, 11:11:59 => Nouveau serveur => Zewox
+18/09/2022, 11:11:59 => Nouveau serveur => Info Côte Bleue
+18/09/2022, 11:11:59 => Nouveau serveur => le VRAIS serveur de NJA
+18/09/2022, 11:11:59 => Nouveau serveur => École Jules FERRY
+18/09/2022, 11:11:59 => Nouveau serveur => 𝙅𝙀𝘼𝙉 𝙓𝙓𝙄𝙄𝙄
+18/09/2022, 11:11:59 => Nouveau serveur => 1STI2D
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur des gens qui parlent plus
+18/09/2022, 11:11:59 => Nouveau serveur => Test For Bot
+18/09/2022, 11:11:59 => Nouveau serveur => ÉcoleDirecte | SainteAnne - Savoisienne
+18/09/2022, 11:11:59 => Nouveau serveur => Pain pain 🍞
+18/09/2022, 11:11:59 => Nouveau serveur => Humour Noir
+18/09/2022, 11:11:59 => Nouveau serveur => 3B
+18/09/2022, 11:11:59 => Nouveau serveur => Unraid
+18/09/2022, 11:11:59 => Nouveau serveur => Ecole Directe
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Beastlyredmc
+18/09/2022, 11:11:59 => Nouveau serveur => android's server
+18/09/2022, 11:11:59 => Nouveau serveur => La Beuh Magique
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Victor
+18/09/2022, 11:11:59 => Nouveau serveur => Dev Srv
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de nael
+18/09/2022, 11:11:59 => Nouveau serveur => EcoleDirecte
+18/09/2022, 11:11:59 => Nouveau serveur => Mouloud For Ever (ha bas les NIGGAS)
+18/09/2022, 11:11:59 => Nouveau serveur => CermP and GaleXx
+18/09/2022, 11:11:59 => Nouveau serveur => Notes
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur discut
+18/09/2022, 11:11:59 => Nouveau serveur => Study group
+18/09/2022, 11:11:59 => Nouveau serveur => Mathis G's server
+18/09/2022, 11:11:59 => Nouveau serveur => gqg
+18/09/2022, 11:11:59 => Nouveau serveur => Futur serveur ?
+18/09/2022, 11:11:59 => Nouveau serveur => Equipe Informatique
+18/09/2022, 11:11:59 => Nouveau serveur => Team Mamadou
+18/09/2022, 11:11:59 => Nouveau serveur => École Directe
+18/09/2022, 11:11:59 => Nouveau serveur => FC Owee Frites 🍟
+18/09/2022, 11:11:59 => Nouveau serveur => japan pvp faction
+18/09/2022, 11:11:59 => Nouveau serveur => serveur team cookie
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de 𝓐𝔃𝓾𝓻𝓾
+18/09/2022, 11:11:59 => Nouveau serveur => Miskin
+18/09/2022, 11:11:59 => Nouveau serveur => STI2D que des BG
+18/09/2022, 11:11:59 => Nouveau serveur => La Comu Notée
+18/09/2022, 11:11:59 => Nouveau serveur => serveur Cringe
+18/09/2022, 11:11:59 => Nouveau serveur => 𝛴𝑙 𝜌𝛼𝑟𝛼𝜕𝜄𝑠𝜀
+18/09/2022, 11:11:59 => Nouveau serveur => Le Monde De MONIQUE
+18/09/2022, 11:11:59 => Nouveau serveur => St Jo
+18/09/2022, 11:11:59 => Nouveau serveur => NOED's server
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur des gameur
+18/09/2022, 11:11:59 => Nouveau serveur => BrawlStarGems France
+18/09/2022, 11:11:59 => Nouveau serveur => Zelda et ses aventures
+18/09/2022, 11:11:59 => Nouveau serveur => Modération I Le Grenier De Arslio
+18/09/2022, 11:11:59 => Nouveau serveur => Bot Server
+18/09/2022, 11:11:59 => Nouveau serveur => Ecole Directe
+18/09/2022, 11:11:59 => Nouveau serveur => ねずみ Nezumi
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de liamp2007
+18/09/2022, 11:11:59 => Nouveau serveur => い Fuyuri
+18/09/2022, 11:11:59 => Nouveau serveur => Mme Dieng.exe
+18/09/2022, 11:11:59 => Nouveau serveur => vacances
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de ! Dypigzx
+18/09/2022, 11:11:59 => Nouveau serveur => école
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Bisuke
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Mathjax
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de FrancisLaTruelle
+18/09/2022, 11:11:59 => Nouveau serveur => Les poto 2.0
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de JulesJules
+18/09/2022, 11:11:59 => Nouveau serveur => Ecsthatikkk
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Benji2006
+18/09/2022, 11:11:59 => Nouveau serveur => 2GT2
+18/09/2022, 11:11:59 => Nouveau serveur => le monde du dc
+18/09/2022, 11:11:59 => Nouveau serveur => 5C(2021-22)
+18/09/2022, 11:11:59 => Nouveau serveur => 𝙷𝚒𝚐𝚑𝚜𝚌𝚑𝚘𝚘𝚕 𝚏𝚢
+18/09/2022, 11:11:59 => Nouveau serveur => Ecoledirecte
+18/09/2022, 11:11:59 => Nouveau serveur => College Louis Pasteur
+18/09/2022, 11:11:59 => Nouveau serveur => Franska Skolan
+18/09/2022, 11:11:59 => Nouveau serveur => Ecole directe
+18/09/2022, 11:11:59 => Nouveau serveur => serveur de test
+18/09/2022, 11:11:59 => Nouveau serveur => Les Potiers | Serveur Discord Lycée
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de FFFFfffF
+18/09/2022, 11:11:59 => Nouveau serveur => EcoleDirecte Support
+18/09/2022, 11:11:59 => Nouveau serveur => Dls 4°3
+18/09/2022, 11:11:59 => Nouveau serveur => Collège Saint joseph
+18/09/2022, 11:11:59 => Nouveau serveur => Discord 1er B
+18/09/2022, 11:11:59 => Nouveau serveur => Sam'S Webhook
+18/09/2022, 11:11:59 => Nouveau serveur => MP-Server
+18/09/2022, 11:11:59 => Nouveau serveur => aa
+18/09/2022, 11:11:59 => Nouveau serveur => Ecoledircte
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Léo LB
+18/09/2022, 11:11:59 => Nouveau serveur => Serveur de Dorian13
+18/09/2022, 11:11:59 => Nouveau serveur => dance till you're dead
+18/09/2022, 11:11:59 => Nouveau serveur => Collège (Sacré-Coeur)

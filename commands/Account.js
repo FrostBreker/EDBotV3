@@ -27,40 +27,22 @@ module.exports = {
 
         await client.defferWithPrivacy(privacy, interaction)
 
-        const authPass = await client.getUser(user).catch(() => { });
+        const dbUser = await client.getUser(user).catch(() => { });
         const compte = await client.connect(user).catch(() => { });
-        if (client.isEmpty(compte) || compte.type !== "student" || client.isEmpty(authPass)) {
+        if (client.isEmpty(compte) || compte.type !== "student" || client.isEmpty(dbUser)) {
             return interaction.editReply({ embeds: [auth()], ephemeral: true });
         }
-
-        let PPV = authPass.ppv;
-        let PHOTOPP = authPass.photo;
-        let autoPost = authPass.autoPost;
-
-        PPV = PPV === 'p' ? "Publique." : "Priver.";
-        PHOTOPP = PHOTOPP === 'p' ? "Publique." : "Priver.";
-        autoPost = autoPost ? "Oui." : "Non.";
         const acc = compte.account;
 
         const embedPrincipal = new MessageEmbed()
             .setColor(430591)
             .setTitle(`🔔 | Compte de ${user.tag}`)
             .setDescription(`\n\n**👤 ${acc.prenom} ${acc.nom}**\n\u200B\n> **📅 ${acc.anneeScolaireCourante} | 🎒 ${acc.profile.classe.libelle}**\n\u200B\n`)
-            .setThumbnail(authPass.picture)
+            .setThumbnail(user.avatarURL())
             .setTimestamp()
             .addFields(
                 {
-                    name: `➡️ Confidentialités :  ${PPV}`,
-                    value: "\u200B",
-                    inline: false
-                },
-                {
-                    name: `➡️ Photo : ${PHOTOPP}`,
-                    value: "\u200B",
-                    inline: false
-                },
-                {
-                    name: `➡️ Autopost : ${autoPost}`,
+                    name: `➡️ Autopost : ${dbUser.autoPost ? "Oui." : "Non."}`,
                     value: "\u200B",
                     inline: false
                 }

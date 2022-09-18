@@ -1,0 +1,190 @@
+Commande chargée [🛢️] : compte
+Commande chargée [🛢️] : moyenne
+Commande chargée [🛢️] : authentication
+Commande chargée [🛢️] : devoir
+Commande chargée [🛢️] : messages
+Commande chargée [🛢️] : note
+Commande chargée [🛢️] : schoollife
+Commande chargée [🛢️] : emploisdutemps
+Commande chargée [🛢️] : classement
+Started refreshing application (/) commands.
+events Chargé [🛄] : ready
+events Chargé [🛄] : guildCreate
+events Chargé [🛄] : interactionCreate
+events Chargé [🛄] : guildDelete
+events Chargé [🛄] : messageCreate
+18/09/2022, 11:12:42 => MongoDB connected!
+Successfully reloaded application (/) commands.
+18/09/2022, 11:12:43 => Suppression d'un serveur => mes bot
+18/09/2022, 11:12:43 => Suppression d'un serveur => Open - All
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de simnJS
+18/09/2022, 11:12:43 => Suppression d'un serveur => School
+18/09/2022, 11:12:43 => Suppression d'un serveur => EcoleDiscord
+18/09/2022, 11:12:43 => Suppression d'un serveur => SIO1
+18/09/2022, 11:12:43 => Suppression d'un serveur => groupe de potes
+18/09/2022, 11:12:43 => Suppression d'un serveur => Mochon's Family
+18/09/2022, 11:12:43 => Suppression d'un serveur => AZERTY
+18/09/2022, 11:12:43 => Suppression d'un serveur => EL DEVOIR
+18/09/2022, 11:12:43 => Suppression d'un serveur => Les Loulous
+18/09/2022, 11:12:43 => Suppression d'un serveur => 3°E
+18/09/2022, 11:12:43 => Suppression d'un serveur => Multi Recidivisme
+18/09/2022, 11:12:43 => Suppression d'un serveur => College les dines chien
+18/09/2022, 11:12:43 => Suppression d'un serveur => 6e A
+18/09/2022, 11:12:43 => Suppression d'un serveur => 4e5 Brexit
+18/09/2022, 11:12:43 => Suppression d'un serveur => Надежды нет
+18/09/2022, 11:12:43 => Suppression d'un serveur => Fnaf / Roblox
+18/09/2022, 11:12:43 => Suppression d'un serveur => 1perfect serveur
+18/09/2022, 11:12:43 => Suppression d'un serveur => random gae shit
+18/09/2022, 11:12:43 => Suppression d'un serveur => general server
+18/09/2022, 11:12:43 => Suppression d'un serveur => astra 9
+18/09/2022, 11:12:43 => Suppression d'un serveur => QueLaMif
+18/09/2022, 11:12:43 => Suppression d'un serveur => EDDD
+18/09/2022, 11:12:43 => Suppression d'un serveur => gta5
+18/09/2022, 11:12:43 => Suppression d'un serveur => Glicht for Gta 5 online
+18/09/2022, 11:12:43 => Suppression d'un serveur => 🚩LaSquad📌
+18/09/2022, 11:12:43 => Suppression d'un serveur => Sioteam privé
+18/09/2022, 11:12:43 => Suppression d'un serveur => École Directe
+18/09/2022, 11:12:43 => Suppression d'un serveur => Tototoma00
+18/09/2022, 11:12:43 => Suppression d'un serveur => Vinted Monitor
+18/09/2022, 11:12:43 => Suppression d'un serveur => Saint Gab'
+18/09/2022, 11:12:43 => Suppression d'un serveur => @here
+18/09/2022, 11:12:43 => Suppression d'un serveur => Print 3D
+18/09/2022, 11:12:43 => Suppression d'un serveur => 2°2 pierre termier
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur école dirècte
+18/09/2022, 11:12:43 => Suppression d'un serveur => Mon bureau 📚✨
+18/09/2022, 11:12:43 => Suppression d'un serveur => 5°2
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de wahid
+18/09/2022, 11:12:43 => Suppression d'un serveur => anime team
+18/09/2022, 11:12:43 => Suppression d'un serveur => 2H Saint-François
+18/09/2022, 11:12:43 => Suppression d'un serveur => Memory
+18/09/2022, 11:12:43 => Suppression d'un serveur => études et classe
+18/09/2022, 11:12:43 => Suppression d'un serveur => Classe de 3°5
+18/09/2022, 11:12:43 => Suppression d'un serveur => P D
+18/09/2022, 11:12:43 => Suppression d'un serveur => 4ème6
+18/09/2022, 11:12:43 => Suppression d'un serveur => Education Purposes
+18/09/2022, 11:12:43 => Suppression d'un serveur => Collège (Sacré-Coeur)
+18/09/2022, 11:12:43 => Suppression d'un serveur => H4X0R 1337 DOX ISP WTF !!NO JOIN!!
+18/09/2022, 11:12:43 => Suppression d'un serveur => Support de Francais
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de pl
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Sir Jahn
+18/09/2022, 11:12:43 => Suppression d'un serveur => BTS SIO
+18/09/2022, 11:12:43 => Suppression d'un serveur => École Directe
+18/09/2022, 11:12:43 => Suppression d'un serveur => Likerz Test Server
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur test
+18/09/2022, 11:12:43 => Suppression d'un serveur => AndrozDev
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Tom💻3
+18/09/2022, 11:12:43 => Suppression d'un serveur => bouteilleDeau provenant de 6eme hermes
+18/09/2022, 11:12:43 => Suppression d'un serveur => L'Ekip
+18/09/2022, 11:12:43 => Suppression d'un serveur => Collège Quatre Nations
+18/09/2022, 11:12:43 => Suppression d'un serveur => TSS TEST
+18/09/2022, 11:12:43 => Suppression d'un serveur => \\
+18/09/2022, 11:12:43 => Suppression d'un serveur => Ꮲⳙⲛⳟʜ🥊
+18/09/2022, 11:12:43 => Suppression d'un serveur => ʷᵉ ᵃʳᵉ ๖ۣۜŦhe ๖ۣۜDemons|God
+18/09/2022, 11:12:43 => Suppression d'un serveur => Le domaine des arabes
+18/09/2022, 11:12:43 => Suppression d'un serveur => 1ere SN
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de fdanger
+18/09/2022, 11:12:43 => Suppression d'un serveur => Test bot
+18/09/2022, 11:12:43 => Suppression d'un serveur => 1ere G (les bg)
+18/09/2022, 11:12:43 => Suppression d'un serveur => test
+18/09/2022, 11:12:43 => Suppression d'un serveur => Gg
+18/09/2022, 11:12:43 => Suppression d'un serveur => 🅥 ⚡𝚂𝚊𝚍 𝙶𝚊𝚖𝚎𝚛𝚜 𝚟𝟸.𝟶™⚡
+18/09/2022, 11:12:43 => Suppression d'un serveur => serveur1ecole
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de 669_NeyKoo
+18/09/2022, 11:12:43 => Suppression d'un serveur => My Buisness
+18/09/2022, 11:12:43 => Suppression d'un serveur => Survyvor
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de miop
+18/09/2022, 11:12:43 => Suppression d'un serveur => NSI - Linux
+18/09/2022, 11:12:43 => Suppression d'un serveur => Info Côte Bleue
+18/09/2022, 11:12:43 => Suppression d'un serveur => les 201
+18/09/2022, 11:12:43 => Suppression d'un serveur => le VRAIS serveur de NJA
+18/09/2022, 11:12:43 => Suppression d'un serveur => 4ème F
+18/09/2022, 11:12:43 => Suppression d'un serveur => Saint Joseph - Serveur Discord
+18/09/2022, 11:12:43 => Suppression d'un serveur => École Jules FERRY
+18/09/2022, 11:12:43 => Suppression d'un serveur => 𝙅𝙀𝘼𝙉 𝙓𝙓𝙄𝙄𝙄
+18/09/2022, 11:12:43 => Suppression d'un serveur => 1STI2D
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur des gens qui parlent plus
+18/09/2022, 11:12:43 => Suppression d'un serveur => ÉcoleDirecte | SainteAnne - Savoisienne
+18/09/2022, 11:12:43 => Suppression d'un serveur => Test For Bot
+18/09/2022, 11:12:43 => Suppression d'un serveur => Pain pain 🍞
+18/09/2022, 11:12:43 => Suppression d'un serveur => Humour Noir
+18/09/2022, 11:12:43 => Suppression d'un serveur => japan pvp faction
+18/09/2022, 11:12:43 => Suppression d'un serveur => 3B
+18/09/2022, 11:12:43 => Suppression d'un serveur => Unraid
+18/09/2022, 11:12:43 => Suppression d'un serveur => Ecole Directe
+18/09/2022, 11:12:43 => Suppression d'un serveur => La Beuh Magique
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Beastlyredmc
+18/09/2022, 11:12:43 => Suppression d'un serveur => android's server
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Victor
+18/09/2022, 11:12:43 => Suppression d'un serveur => Dev Srv
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de nael
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur discut
+18/09/2022, 11:12:43 => Suppression d'un serveur => EcoleDirecte
+18/09/2022, 11:12:43 => Suppression d'un serveur => Mouloud For Ever (ha bas les NIGGAS)
+18/09/2022, 11:12:43 => Suppression d'un serveur => CermP and GaleXx
+18/09/2022, 11:12:43 => Suppression d'un serveur => Notes
+18/09/2022, 11:12:43 => Suppression d'un serveur => Study group
+18/09/2022, 11:12:43 => Suppression d'un serveur => Mathis G's server
+18/09/2022, 11:12:43 => Suppression d'un serveur => Equipe Informatique
+18/09/2022, 11:12:43 => Suppression d'un serveur => Team Mamadou
+18/09/2022, 11:12:43 => Suppression d'un serveur => Futur serveur ?
+18/09/2022, 11:12:43 => Suppression d'un serveur => serveur team cookie
+18/09/2022, 11:12:43 => Suppression d'un serveur => École Directe
+18/09/2022, 11:12:43 => Suppression d'un serveur => gqg
+18/09/2022, 11:12:43 => Suppression d'un serveur => Les bg de Saint Gab
+18/09/2022, 11:12:43 => Suppression d'un serveur => Zewox
+18/09/2022, 11:12:43 => Suppression d'un serveur => Miskin
+18/09/2022, 11:12:43 => Suppression d'un serveur => STI2D que des BG
+18/09/2022, 11:12:43 => Suppression d'un serveur => La Comu Notée
+18/09/2022, 11:12:43 => Suppression d'un serveur => 𝛴𝑙 𝜌𝛼𝑟𝛼𝜕𝜄𝑠𝜀
+18/09/2022, 11:12:43 => Suppression d'un serveur => serveur Cringe
+18/09/2022, 11:12:43 => Suppression d'un serveur => Le Monde De MONIQUE
+18/09/2022, 11:12:43 => Suppression d'un serveur => St Jo
+18/09/2022, 11:12:43 => Suppression d'un serveur => NOED's server
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur des gameur
+18/09/2022, 11:12:43 => Suppression d'un serveur => BrawlStarGems France
+18/09/2022, 11:12:43 => Suppression d'un serveur => Zelda et ses aventures
+18/09/2022, 11:12:43 => Suppression d'un serveur => Ecole Directe
+18/09/2022, 11:12:43 => Suppression d'un serveur => Modération I Le Grenier De Arslio
+18/09/2022, 11:12:43 => Suppression d'un serveur => ねずみ Nezumi
+18/09/2022, 11:12:43 => Suppression d'un serveur => Bot Server
+18/09/2022, 11:12:43 => Suppression d'un serveur => い Fuyuri
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de liamp2007
+18/09/2022, 11:12:43 => Suppression d'un serveur => Mme Dieng.exe
+18/09/2022, 11:12:43 => Suppression d'un serveur => école
+18/09/2022, 11:12:43 => Suppression d'un serveur => vacances
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de ! Dypigzx
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Bisuke
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Mathjax
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de FrancisLaTruelle
+18/09/2022, 11:12:43 => Suppression d'un serveur => FC Owee Frites 🍟
+18/09/2022, 11:12:43 => Suppression d'un serveur => Les poto 2.0
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de JulesJules
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Benji2006
+18/09/2022, 11:12:43 => Suppression d'un serveur => Ecsthatikkk
+18/09/2022, 11:12:43 => Suppression d'un serveur => le monde du dc
+18/09/2022, 11:12:43 => Suppression d'un serveur => 2GT2
+18/09/2022, 11:12:43 => Suppression d'un serveur => 𝙷𝚒𝚐𝚑𝚜𝚌𝚑𝚘𝚘𝚕 𝚏𝚢
+18/09/2022, 11:12:43 => Suppression d'un serveur => 5C(2021-22)
+18/09/2022, 11:12:43 => Suppression d'un serveur => College Louis Pasteur
+18/09/2022, 11:12:43 => Suppression d'un serveur => Ecoledirecte
+18/09/2022, 11:12:43 => Suppression d'un serveur => Franska Skolan
+18/09/2022, 11:12:43 => Suppression d'un serveur => Ecole directe
+18/09/2022, 11:12:43 => Suppression d'un serveur => Les Potiers | Serveur Discord Lycée
+18/09/2022, 11:12:43 => const anotherTest = true;#8515 with 5 users!
+18/09/2022, 11:12:43 => Express server is connected on port: 26065
+18/09/2022, 11:12:43 => Suppression d'un serveur => serveur de test
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de 𝓐𝔃𝓾𝓻𝓾
+18/09/2022, 11:12:43 => Suppression d'un serveur => EcoleDirecte Support
+18/09/2022, 11:12:43 => Suppression d'un serveur => Collège Saint joseph
+18/09/2022, 11:12:43 => Suppression d'un serveur => Discord 1er B
+18/09/2022, 11:12:43 => Suppression d'un serveur => Ecoledircte
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Dorian13
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de Léo LB
+18/09/2022, 11:12:43 => Suppression d'un serveur => dance till you're dead
+18/09/2022, 11:12:43 => Suppression d'un serveur => Collège (Sacré-Coeur)
+18/09/2022, 11:12:43 => Suppression d'un serveur => Sam'S Webhook
+18/09/2022, 11:12:43 => Suppression d'un serveur => aa
+18/09/2022, 11:12:43 => Suppression d'un serveur => MP-Server
+18/09/2022, 11:12:43 => Nouveau serveur => ѴΛĿT
+18/09/2022, 11:12:43 => Suppression d'un serveur => Serveur de FFFFfffF
+18/09/2022, 11:12:43 => Suppression d'un serveur => Dls 4°3

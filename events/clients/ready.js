@@ -51,5 +51,6 @@ module.exports = {
         //Bot login
         client.logger(`${client.timestampParser()} => ${client.user.tag} with ${client.guilds.cache.map(g => g.
             memberCount).reduce((a, b) => a + b)} users!`)
+
     }
 }

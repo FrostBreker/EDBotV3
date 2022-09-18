@@ -9,7 +9,7 @@ module.exports = {
             .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: baseImageURI })
             .setImage("https://i.ibb.co/Q8whNGn/Conexion.gif")
             .addFields(
-                { name: '\u200B', value: "**https://ecole-directe-site.herokuapp.com/profil**" }
+                { name: '\u200B', value: "**https://ecoledirectebot.xyz/profil.html**" }
             )
             .setTimestamp()
             .setColor(430591)
