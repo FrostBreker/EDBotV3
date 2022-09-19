@@ -5,6 +5,7 @@ EcoleDirecte à Discord. Il est en ligne et peut être invité à cette adresse 
 https://ecoledirectebot.xyz/
 
 [![Discord Bots](https://top.gg/api/widget/837639493745246228.svg)(https://top.gg/bot/837639493745246228)
+[![CodeQL](https://github.com/FrostBreker/EDBotV3/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/FrostBreker/EDBotV3/actions/workflows/codeql-analysis.yml)
 
 # Instalation pour contribution
 
