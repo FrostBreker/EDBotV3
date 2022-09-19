@@ -4,7 +4,7 @@ const _ = require('lodash');
 function sendGrades(member, user, notes, client) {
     if (!client.isEmpty(notes) && !client.isEmpty(user.notes)) {
         if (!_.isEqual(user.notes, notes)) {
-            const sortedArray = client.getDifference(notes, user.notes);
+            const sortedArray = client.getDifferenceForGrades(notes, user.notes);
             sortedArray.map(async (s) => {
                 const embedPrincipal = new MessageEmbed()
                     .setColor(430591)

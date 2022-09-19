@@ -49,7 +49,7 @@ client.commands = new Collection();
 //Check error
 process.on("exit", code => { client.logger(`Le processus s'est arrêté avec le code: ${code}!`); });
 process.on("uncaughtException", (err, origin) => { client.logger(`uncaughtException: ${err}`, `Origine: ${origin}`); });
-process.on("unhandledRejection", (reason, promise) => { client.logger(`UNHANDLED_REJECTION: ${reason}\n--------\n`, promise); });
+process.on("unhandledRejection", (reason, promise) => { client.logger(`UNHANDLED_REJECTION: ${reason}\n--------\n\n${promise}`); });
 process.on("warning", (...args) => { client.logger(...args); });
 
 //Login

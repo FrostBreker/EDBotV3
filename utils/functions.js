@@ -253,6 +253,14 @@ module.exports = async client => {
         });
     }
 
+    client.getDifferenceForGrades = (array1, array2) => {
+        return array1.filter(object1 => {
+            return !array2.some(object2 => {
+                return object1._raw.id === object2._raw.id;
+            });
+        });
+    }
+
     client.getCanceledClasses = (schedules) => {
         if (client.isEmpty(schedules)) return [];
         const canceledClasses = [];
