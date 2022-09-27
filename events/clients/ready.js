@@ -32,28 +32,14 @@ module.exports = {
 
         //Autosend
         await add(client);
-        // cron.schedule('* * * * *', async () => {
-        //     if (!client.isEmpty(users)) {
-        //         await send(client);
-        //         await add(client);
-        //     } else {
-        //         add(client);
-        //     }
-        // });
-        setInterval(async () => {
-            console.log("hey");
+        cron.schedule('* * * * *', async () => {
             if (!client.isEmpty(users)) {
-                console.log("hey2");
-
-                await send(client);
-                await add(client);
-            } else {
-                console.log("hey3");
-
+                 await send(client);
+                 await add(client);
+             } else {
                 add(client);
-            }
-        }, 10000)
-
+             }
+        });
 
         app.listen(process.env.PORT, () => {
             client.logger(`${client.timestampParser()} => Express server is connected on port: ${process.env.PORT}`)
