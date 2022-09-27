@@ -32,7 +32,7 @@ module.exports = {
 
         //Autosend
         await add(client);
-        cron.schedule('* * * * *', async () => {
+        cron.schedule('*/15 * * * *', async () => {
             if (!client.isEmpty(users)) {
                  await send(client);
                  await add(client);
