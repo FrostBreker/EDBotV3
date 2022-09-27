@@ -51,8 +51,9 @@ module.exports.add = async (client) => {
 }
 
 module.exports.send = async (client) => {
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
+    const newUsers = users;
+    for (let i = 0; i < newUsers.length; i++) {
+        const user = newUsers[i];
         async function sendAutopost() {
             const member = await client.users.fetch(user.userId).catch(() => { })
             if (client.isEmpty(member)) return;

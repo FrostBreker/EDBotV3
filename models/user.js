@@ -11,16 +11,6 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false
     },
-    discordRefresh: {
-      type: String,
-      unique: true,
-      require: true,
-    },
-    discordType: {
-      type: String,
-      unique: true,
-      require: true,
-    },
     username: {
       type: String,
       unique: true,
@@ -32,20 +22,9 @@ const userSchema = mongoose.Schema(
       type: String,
       unique: true
     },
-    discordToken: {
-      type: String,
-      unique: true
-    },
-    photo: {
-      type: String,
-    },
     picture: {
       type: String,
-    },
-    tokenExpire: {
-      type: Number
-    },
-    ppv: String,
+    }
   },
   {
     timestamps: true,

@@ -20,6 +20,8 @@ ALG= //Chiffrement
 DBCONECTION= //Adresse de connexion mongodb
 PORT=26065
 CLIENT_URL=http://localhost:3000
+NOTION_TOKEN=Token notion
+NOTION_DATABASE_ID=Database ID Notion
 ```
 
 Une fois fait il vous suffit d'exécuter la commande `npm run watch` pour lancer

@@ -7,6 +7,11 @@ const ALG = process.env.ALG;
 const unixTime = require('unix-time');
 const api = require("../Api/index");
 const fs = require("fs");
+const { Client } = require("@notionhq/client");
+
+const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+});
 
 module.exports = async client => {
     //Server
@@ -286,5 +291,74 @@ module.exports = async client => {
             if (!err) return console.log(log);
             console.log(err);
         })
+    }
+
+    //Notion
+
+    client.addHomeworkToNotion = async (name, content, startDate, endDate) => {
+        try {
+            await notion.pages.create({
+                parent: {
+                    database_id: process.env.NOTION_DATABASE_ID,
+                },
+                icon: {
+                    type: "emoji",
+                    emoji: "📝",
+                },
+                "properties": {
+                    "Project name": {
+                        "title": [
+                            {
+                                "text": {
+                                    "content": name
+                                }
+                            }
+                        ]
+                    },
+                    "Status": {
+                        id: "notion%3A%2F%2Fprojects%2Fstatus_property",
+                        type: "status",
+                        status: { id: "planned", name: "Planning", color: "blue" },
+                    },
+                    "Dates": {
+                        id: 'notion%3A%2F%2Fprojects%2Fproject_dates_property',
+                        type: 'date',
+                        date: { start: startDate, end: endDate, time_zone: null }
+                    }
+                },
+                "children": [
+                    {
+                        "object": "block",
+                        "heading_2": {
+                            "rich_text": [
+                                {
+                                    "text": {
+                                        "content": name
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "object": "block",
+                        "paragraph": {
+                            "rich_text": [
+                                {
+                                    "text": {
+                                        "content": content
+                                    }
+                                }
+                            ],
+                            "color": "default"
+                        }
+                    }
+                ]
+            }).then((res) => {
+                client.logger(`${client.timestampParser()} => Homework added to notion --> ${res.properties["Project name"].title[0].text.content}`);
+            })
+        } catch (err) {
+            console.log(`${client.timestampParser()} => [ERROR]: ${err}`);
+            client.logger(`${client.timestampParser()} => [ERROR]: ${err}`);
+        }
     }
 };
