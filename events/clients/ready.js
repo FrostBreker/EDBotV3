@@ -34,11 +34,11 @@ module.exports = {
         await add(client);
         cron.schedule('*/15 * * * *', async () => {
             if (!client.isEmpty(users)) {
-                 await send(client);
-                 await add(client);
-             } else {
+                await send(client);
+                await add(client);
+            } else {
                 add(client);
-             }
+            }
         });
 
         app.listen(process.env.PORT, () => {

@@ -15,7 +15,10 @@ function sendHomeworks(member, user, homeworks, client) {
                     .setTimestamp()
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
-                if (user.userId === "284792282249428993") client.addHomeworkToNotion(`🔔 | Travaille à faire en ${s.subject.name} (${s.teacher})`, s.job.content.text, s.job.givenAt.split("T")[0], s.date.split("T")[0]);
+                if (user.userId === "284792282249428993") {
+                    const newDate = new Date(s.date);
+                    client.addHomeworkToNotion(`🔔 | Travaille à faire en ${s.subject.name} (${s.teacher})`, s.job.content.text, s._raw.aFaire.donneLe, newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + newDate.getDate());
+                }
 
 
                 return await member.send({ embeds: [embedPrincipal] }).then(() => {
