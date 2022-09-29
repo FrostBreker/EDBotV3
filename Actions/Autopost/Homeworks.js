@@ -16,7 +16,7 @@ function sendHomeworks(member, user, homeworks, client) {
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
                 if (user.userId === "284792282249428993") {
-                    client.addHomeworkToNotion(`🔔 | Travaille à faire en ${s.subject.name} (${s.teacher})`, s.job.content.text, s.job.givenAt, s.date);
+                    client.addHomeworkToNotion(` | ${s.subject.name} (${s.teacher})`, s.job.content.text, s.job.givenAt, s.date);
                 }
 
 
