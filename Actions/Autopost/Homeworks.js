@@ -16,8 +16,7 @@ function sendHomeworks(member, user, homeworks, client) {
                     .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
                 if (user.userId === "284792282249428993") {
-                    const newDate = new Date(s.date);
-                    client.addHomeworkToNotion(`🔔 | Travaille à faire en ${s.subject.name} (${s.teacher})`, s.job.content.text, s._raw.aFaire.donneLe, newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + newDate.getDate());
+                    client.addHomeworkToNotion(`🔔 | Travaille à faire en ${s.subject.name} (${s.teacher})`, s.job.content.text, s.job.givenAt, s.date);
                 }
 
 
