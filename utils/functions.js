@@ -290,10 +290,11 @@ module.exports = async client => {
             let options = {
                 hour: "2-digit",
                 minute: "2-digit",
-                second: "2-digit"
+                second: "2-digit",
+                timeZone: "Europe/Paris"
             };
 
-            let date = new Date(Date.now()).toLocaleDateString("fr-FR", options);
+            let date = new Date(Date.now()).toLocaleString("fr-FR", { timeZone: "Europe/Paris" });
             return date.toString();
         }
     };
