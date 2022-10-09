@@ -5,9 +5,7 @@ const axios = require("axios");
 
 // —————————————————————————————————————————————————————————————————————————————
 
-const Student = require("./Student"),
-    Family = require("./Family");
-
+const Student = require("./Student");
 class Session {
 
     constructor() { }

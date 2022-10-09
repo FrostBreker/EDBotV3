@@ -53,30 +53,27 @@ module.exports.send = async (client) => {
     const newUsers = users;
     for (let i = 0; i < newUsers.length; i++) {
         const user = newUsers[i];
-        async function sendAutopost() {
-            const dUser = await client.users.fetch(user.userId).catch(() => { })
-            if (client.isEmpty(dUser)) return;
+        const dUser = await client.users.fetch(user.userId).catch(() => { })
+        if (client.isEmpty(dUser)) return;
 
-            await user.compte.getGrades().then((notes) => {
-                sendNote(dUser, user, notes, client);
-            }).catch(() => { })
+        await user.compte.getGrades().then((notes) => {
+            sendNote(dUser, user, notes, client);
+        }).catch(() => { })
 
-            await user.compte.getHomework(Date.now(), true).then((homeworks) => {
-                sendHomework(dUser, user, homeworks, client);
-            }).catch(() => { })
+        await user.compte.getHomework(Date.now(), true).then((homeworks) => {
+            sendHomework(dUser, user, homeworks, client);
+        }).catch(() => { })
 
-            await user.compte.getTimetable([client.getTheDate(), client.getTheDate()]).then((schedule) => {
-                sendCanceledClass(dUser, user, schedule, client);
-            }).catch(() => { })
+        await user.compte.getTimetable([client.getTheDate(), client.getTheDate()]).then((schedule) => {
+            sendCanceledClass(dUser, user, schedule, client);
+        }).catch(() => { })
 
-            await user.compte.getMessages().then((messages) => {
-                sendMessages(dUser, user, messages, client);
-            }).catch(() => { });
+        await user.compte.getMessages().then((messages) => {
+            sendMessages(dUser, user, messages, client);
+        }).catch(() => { });
 
-            await user.assgarCompte.getSchoolLife().then((schoollife) => {
-                sendSLS(dUser, user, schoollife, client);
-            }).catch(() => { });
-        }
-        sendAutopost()
+        await user.assgarCompte.getSchoolLife().then((schoollife) => {
+            sendSLS(dUser, user, schoollife, client);
+        }).catch(() => { });
     }
 }

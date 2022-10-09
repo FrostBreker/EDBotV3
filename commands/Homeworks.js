@@ -1,4 +1,3 @@
-const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { edHomeworks } = require("../Embeds/ED");

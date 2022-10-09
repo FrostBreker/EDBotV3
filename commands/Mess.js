@@ -1,7 +1,5 @@
-const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { baseImageURI } = require("../config");
 const { edMessages } = require("../Embeds/ED");
 
 const data = new SlashCommandBuilder()

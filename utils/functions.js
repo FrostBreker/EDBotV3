@@ -9,6 +9,7 @@ const fs = require("fs");
 const { Client } = require("@notionhq/client");
 const { edSelect } = require("../SelectMenu/ED");
 const { edHomeworks, edMessages, grades, schoolLife } = require("../Embeds/ED");
+const { auth } = require("../Embeds/Misc");
 
 const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -17,7 +18,7 @@ const notion = new Client({
 module.exports = async client => {
     //Server
     client.getGuild = async guild => {
-        const data = await Guild.findOne({ guildID: guild.id }).catch((e) => { });
+        const data = await Guild.findOne({ guildID: guild.id }).catch(() => { });
         return data ? data : undefined;
     };
 
@@ -104,16 +105,14 @@ module.exports = async client => {
     };
 
     client.getPercent = (my, myC, sur) => {
+        const percent1 = parseInt(myC) * (100 / sur);
+        const percent2 = parseInt(my) * (100 / sur);
         if (my > myC) {
-            let percent1 = parseInt(myC) * (100 / sur);
-            let percent2 = parseInt(my) * (100 / sur);
             let percent = percent2 - percent1;
             var percentTA = percent.toString().split(".")[0];
             const result = `✅ | **${percentTA}% au-dessus de la moyenne de classe** | ✅`
             return result
         } else {
-            let percent1 = parseInt(myC) * (100 / sur);
-            let percent2 = parseInt(my) * (100 / sur);
             let percent = percent1 - percent2;
             var percentTA = percent.toString().split(".")[0];
             const result = `⚠️ | **${percentTA}% en dessous de la moyenne de classe** | ⚠️`

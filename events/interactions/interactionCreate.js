@@ -1,6 +1,5 @@
 const { wrongVBtn } = require('../../Buttons/MiscButtons');
 const config = require('../../config');
-const { edHomeworks } = require("../../Embeds/ED");
 
 module.exports = {
     name: "interactionCreate",

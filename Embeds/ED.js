@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { baseImageURI } = require('../config');
+const { noHomework } = require('./Misc');
 
 const color = 430591;
 module.exports = {
@@ -33,7 +34,7 @@ module.exports = {
             .addField('\u200B', '\u200B');
 
         if (timeline[0].typeCours === "CONGE") {
-            return await interaction.editReply({ embeds: [noHomework()], ephemeral: true });
+            return noHomework();
         } else {
             for (let i = 0; i < timeline.length; i++) {
                 const startDate = timeline[i].start_date.split(" ");
@@ -71,7 +72,10 @@ module.exports = {
             .setColor(color)
             .setTitle(`> 🔔 | Nouvelle note en ${s.subjectName}`)
             .setThumbnail(dUser.avatarURL() || client.user.avatarURL())
-            .setDescription("<:annonce:962378435815161936> : **" + s.subjectName + "** - **" + s.name + "** - **" + s._raw.typeDevoir + "**\n\n<:stats:962354418660028416> : " + s.value + "/" + s.outOf + "(**Coef** : " + s._raw.coef + ")\n\n" + client.getPercent(s.value, s.classAvg, s.outOf) + "\n\n<:planning:1020044801409826816> : <t:" + parseInt(Date.parse(s._raw.date) / 1000) + ":R>")
+            .setDescription(`<:annonce:962378435815161936> : **${s.subjectName}** - **${s.name}** - **${s._raw.typeDevoir}**
+            \n\n<:stats:962354418660028416> : **${s.value}**/**${s.outOf}** (**Coef** : ${s._raw.coef})
+            \n\n${client.getPercent(s.value, s.classAvg, s.outOf)}
+            \n\n<:planning:1020044801409826816> : <t:${parseInt(Date.parse(s._raw.date) / 1000)}:R>`)
             .setTimestamp()
             .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
