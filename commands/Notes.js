@@ -1,18 +1,10 @@
-const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { baseImageURI } = require("../config");
+const { grades } = require("../Embeds/ED");
 
 const data = new SlashCommandBuilder()
     .setName("note")
     .setDescription("Voire ses notes EcoleDirecte.")
-    .addNumberOption(option =>
-        option.setName("note")
-            .setDescription("Compris entre 0 et infinie.")
-            .setRequired(true)
-            .setMinValue(0)
-
-    )
     .addStringOption(option =>
         option.setName("confidentialités")
             .setDescription("Choisissez votre confidentialité")
@@ -27,12 +19,7 @@ module.exports = {
     data: data,
     runSlash: async (client, interaction) => {
         const user = interaction.member.user;
-        const data = [];
-        interaction.options._hoistedOptions.forEach((x) => {
-            return data.push(x.value);
-        })
-        const number = data[0];
-        const privacy = data[1];
+        const privacy = await interaction.options.getString("confidentialités");
 
         await client.defferWithPrivacy(privacy, interaction)
 
@@ -41,29 +28,12 @@ module.exports = {
             return await interaction.editReply({ embeds: [auth()], ephemeral: true });
         }
 
-        const grades = await compte.getGrades();
+        const gradesList = await compte.getGrades();
 
-        if (client.isEmpty(grades)) {
-            return await interaction.editReply({ content: `Cette notes n'existe **pas**\nNotes disponibles**:**\n**0** - **${nbv}**`, ephemral: true });
+        const gr = gradesList[0];
+        if (client.isEmpty(gradesList) || client.isEmpty(gr)) {
+            return interaction.editReply({ content: `**Une erreur est survenue.**`, ephemeral: true })
         }
-        let nb = grades.length;
-
-        const gr = grades[number];
-        const date = gr._raw.date;
-
-        let nbv = nb > 0 ? nb - 1 : nb;
-        if (number > nbv || client.isEmpty(gr)) {
-            return await interaction.editReply({ content: `Veuillez préciser un nombre entre : **0** - **${nbv}**`, ephemeral: true });
-        }
-
-        const embedPrincipal = new MessageEmbed()
-            .setColor(430591)
-            .setTitle(`> 🔔 | Note de ${gr.subjectName}`)
-            .setThumbnail(user.avatarURL() || baseImageURI)
-            .setDescription("**Notes :** `" + "0 - " + nbv + "`\n\n📢 : **" + gr.subjectName + "** - **" + gr.name + "** - **" + gr._raw.typeDevoir + "**\n\n📈 : " + gr.value + "/20 (**Coef** : " + gr._raw.coef + ")\n\n" + client.getPercent(gr.value, gr.classAvg, gr.outOf) + "\n\n📅 : <t:" + parseInt(Date.parse(date) / 1000) + ":R>")
-            .setTimestamp()
-            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
-
-        await interaction.editReply({ embeds: [embedPrincipal] });
+        await interaction.editReply({ embeds: [grades(gr, user, client)], components: [client.createSelectMenu(gradesList, "grades", gr._raw.id)] });
     }
 }

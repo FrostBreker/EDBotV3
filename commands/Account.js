@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { edAccount } = require("../Embeds/ED");
 
 const data = new SlashCommandBuilder()
     .setName("compte")
@@ -34,21 +35,6 @@ module.exports = {
         }
         const acc = compte.account;
 
-        const embedPrincipal = new MessageEmbed()
-            .setColor(430591)
-            .setTitle(`🔔 | Compte de ${user.tag}`)
-            .setDescription(`\n\n**👤 ${acc.prenom} ${acc.nom}**\n\u200B\n> **📅 ${acc.anneeScolaireCourante} | 🎒 ${acc.profile.classe.libelle}**\n\u200B\n`)
-            .setThumbnail(user.avatarURL())
-            .setTimestamp()
-            .addFields(
-                {
-                    name: `➡️ Autopost : ${dbUser.autoPost ? "Oui." : "Non."}`,
-                    value: "\u200B",
-                    inline: false
-                }
-            )
-            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
-
-        interaction.editReply({ embeds: [embedPrincipal] });
+        interaction.editReply({ embeds: [edAccount(acc, user, dbUser, client)] });
     }
 }

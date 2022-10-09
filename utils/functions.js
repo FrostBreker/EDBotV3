@@ -4,10 +4,11 @@ const CryptoJS = require("crypto-js");
 const { Session } = require("ecoledirecte.js");
 require("dotenv").config();
 const ALG = process.env.ALG;
-const unixTime = require('unix-time');
 const api = require("../Api/index");
 const fs = require("fs");
 const { Client } = require("@notionhq/client");
+const { edSelect } = require("../SelectMenu/ED");
+const { edHomeworks, edMessages, grades, schoolLife } = require("../Embeds/ED");
 
 const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -21,7 +22,7 @@ module.exports = async client => {
     };
 
     client.getAllGuild = async () => {
-        const data = await Guild.find().catch((e) => { });
+        const data = await Guild.find().catch(() => { });
         return data ? data : undefined;
     };
 
@@ -29,7 +30,7 @@ module.exports = async client => {
         const filter = { guildID: g.id };
         const update = { guildName: g.name };
 
-        let doc = await Guild.findOneAndUpdate(filter, update, {
+        await Guild.findOneAndUpdate(filter, update, {
             new: true
         }).then(g => client.logger(`${client.timestampParser()} => Update d'un serveur => ${g.guildName}`))
     }
@@ -74,7 +75,7 @@ module.exports = async client => {
 
             if (compte) return compte;
         }
-    }
+    };
 
     client.defferWithPrivacy = async (privacy, interaction) => {
         if (!privacy) {
@@ -86,7 +87,7 @@ module.exports = async client => {
                 return await interaction.deferReply({ ephemeral: false }).catch(() => { });
             }
         }
-    }
+    };
 
     client.asgarConnect = async user => {
         const data = await User.findOne({ userID: user.id });
@@ -100,7 +101,7 @@ module.exports = async client => {
 
             return compte ? compte : "NotED";
         } else return "NotRegister";
-    }
+    };
 
     client.getPercent = (my, myC, sur) => {
         if (my > myC) {
@@ -108,100 +109,172 @@ module.exports = async client => {
             let percent2 = parseInt(my) * (100 / sur);
             let percent = percent2 - percent1;
             var percentTA = percent.toString().split(".")[0];
-            const result = `✅ | **+${percentTA}%** | ✅`
+            const result = `✅ | **${percentTA}% au-dessus de la moyenne de classe** | ✅`
             return result
         } else {
             let percent1 = parseInt(myC) * (100 / sur);
             let percent2 = parseInt(my) * (100 / sur);
             let percent = percent1 - percent2;
             var percentTA = percent.toString().split(".")[0];
-            const result = `⚠️ | **-${percentTA}%** | ⚠️`
+            const result = `⚠️ | **${percentTA}% en dessous de la moyenne de classe** | ⚠️`
             return result
         }
-    }
+    };
+
+    client.createSelectMenu = (data, type, id) => {
+        const convertDateToFrench = d => {
+            return new Date(d).toLocaleString("fr-FR", { timeZone: "Europe/Paris" }).split(" ")[0];
+        };
+        let ref = [];
+        switch (type) {
+            case "homeworks":
+                ref = [];
+                for (let i = 0; i < data.length; i++) {
+                    const e = data[i];
+                    ref.push({
+                        label: `${e.subject.name} - ${convertDateToFrench(e.date)}`,
+                        value: e.id.toString()
+                    });
+                }
+                break;
+            case "mails":
+                ref = [];
+                for (let i = 0; i < data.length; i++) {
+                    const e = data[i];
+                    ref.push({
+                        label: `${e.from.lastName} - ${convertDateToFrench(e.date)}`,
+                        value: e.id.toString()
+                    });
+                }
+                break;
+            case "grades":
+                ref = [];
+                for (let i = 0; i < data.length; i++) {
+                    const e = data[i];
+                    ref.push({
+                        label: `${e.value}/${e.outOf} - ${e.subjectName}`,
+                        value: e._raw.id.toString()
+                    });
+                }
+                break;
+            case "schoollife":
+                ref = [];
+                for (let i = 0; i < data.length; i++) {
+                    const e = data[i];
+                    ref.push({
+                        label: `${e.typeElement} - ${convertDateToFrench(e.date)}`,
+                        value: e.id.toString()
+                    });
+                }
+                break;
+        }
+        if (ref.length >= 24) {
+            ref.reverse();
+            ref.length = 24;
+            ref.reverse();
+        }
+        if (client.isEmpty(ref)) return;
+        return edSelect(ref, type, id);
+    };
+
+    client.findEdObjectWithId = async (user, id, type, client) => {
+        let data;
+        const compte = await client.connect(user).catch(() => { });
+        const asgarCompte = await client.asgarConnect(user).catch(() => { });
+        if (client.isEmpty(compte) || compte.type !== "student" || client.isEmpty(asgarCompte)) return auth();
+        switch (type) {
+            case "homeworks":
+                const homeworks = await compte.getHomework(Date.now(), true);
+                data = await homeworks.find(h => {
+                    if (h.id.toString() === id) return h;
+                });
+                if (client.isEmpty(data)) return;
+                else return edHomeworks(data, user, client);
+            case "mails":
+                const mails = await compte.getMessages();
+                data = await mails.find(m => {
+                    if (m.id.toString() === id) return m;
+                });
+                if (client.isEmpty(data)) return;
+                const content = await data.getContent();
+                let refined = []
+                content.text.split("\n").map(x => {
+                    if (!x.startsWith("[data:image")) {
+                        refined.push(x);
+                    }
+                })
+                const ref = refined ? refined.join("\n") : `Inconnue.`;
+                return edMessages(data, ref, user, client);
+            case "grades":
+                const gradesList = await compte.getGrades();
+                data = await gradesList.find(h => {
+                    if (h._raw.id.toString() === id) return h;
+                });
+                if (client.isEmpty(data)) return;
+                else return grades(data, user, client);
+            case "schoollife":
+                const schoolLifeList = await asgarCompte.getSchoolLife();
+                data = await schoolLifeList.find(h => {
+                    if (h.id.toString() === id) return h;
+                });
+                if (client.isEmpty(data)) return;
+                else return schoolLife(user, data, client);
+        }
+    };
 
     //Stats
-    client.updateStats = (type) => {
-        Stats.find((err, docs) => {
-            if (!err) {
-                const stats = docs[0];
-                const createdDate = stats.createdAt;
-                let date = unixTime(new Date(createdDate + 86400));
-                const nowDating = unixTime(new Date());
-                let refine = date + 86400
-                if (refine < nowDating) {
-                    async function creatingNewStats() {
-                        const merged = Object.assign({ _id: mongoose.Types.ObjectId(), numberOfRequest: 1 })
-                        const createStats = await new Stats(merged);
-                        createStats.save().then(async g => client.logger(`${client.timestampParser()} => New stats => ${g._id}`) &&
-                            await Stats.findOneAndUpdate(
-                                { _id: g._id },
-                                {
-                                    $inc: {
-                                        numberOfRequest: 1,
-                                        numberOfMessages: 1
-                                    },
-                                },
-                                { new: true, upsert: true, setDefaultsOnInsert: true },
-                                (err, docs) => {
-                                    if (!err) return client.logger(`${client.timestampParser()} => Request updated ${docs.numberOfRequest}`);
-                                    if (err) return client.logger(err);
-                                }
-                            )
-                        );
-                    }
+    client.createStat = async () => {
+        const merged = Object.assign(
+            { _id: mongoose.Types.ObjectId() },
+            {
+                commands: [],
+                dms: []
+            });
+        const createStats = new Stats(merged);
+        return createStats.save().then((docs) => {
+            client.logger(`${client.timestampParser()} => [STATS] Stats created`);
+            return docs;
+        });
+    };
 
-                    creatingNewStats();
-
-                } else {
-                    async function mergedStats() {
-                        if (type === "msg") {
-                            await Stats.findOneAndUpdate(
-                                { _id: stats._id },
-                                {
-                                    $inc: {
-                                        numberOfMessages: 1,
-                                    },
-                                },
-                                { new: true, upsert: true, setDefaultsOnInsert: true },
-                                (err, docs) => {
-                                    if (!err) return client.logger(`${client.timestampParser()} => Message sent number updated --> ${docs.numberOfMessages}`);
-                                    if (err) return client.logger(err);
-                                }
-                            ).clone()
-                        } else {
-                            await Stats.findOneAndUpdate(
-                                { _id: stats._id },
-                                {
-                                    $inc: {
-                                        numberOfRequest: 1,
-                                    },
-                                },
-                                { new: true, upsert: true, setDefaultsOnInsert: true },
-                                (err, docs) => {
-                                    if (!err) return client.logger(`${client.timestampParser()} => Actions request updated --> ${docs.numberOfRequest}`);
-                                    if (err) return client.logger(err);
-                                }
-                            ).clone()
-                        }
-                    }
-                    mergedStats();
-                }
-            }
-            else client.logger("Error to get data : " + err);
-        }).sort({ createdAt: -1 });
-    }
-
-    client.addOrUpdateGuild = async g => {
-        const data = await client.getGuild(g);
-        if (!data) {
-            client.createGuild(g);
-            client.updateStats();
-        } else {
-            client.updateGuild(g);
-            client.updateStats();
+    const updateStats = async (type, value, username, docs) => {
+        if (client.isEmpty(docs)) return;
+        switch (type) {
+            case "cmd":
+                docs.commands.push({
+                    value: value,
+                    timestamp: Date.now()
+                })
+                await docs.save().then(() => client.logger(`${client.timestampParser()} => [STATS] Commande => ${value} => (${username})`));
+                break;
+            case "dm":
+                docs.dms.push({
+                    _id: mongoose.Types.ObjectId(),
+                    value: value,
+                    timestamp: Date.now()
+                })
+                await docs.save().then(() => client.logger(`${client.timestampParser()} => [STATS] DM => ${value} => (${username})`));
+                break;
+            default:
+                break;
         }
-    }
+    };
+    client.makeOrUpdateStats = async (type, value, username) => {
+        const stats = await Stats.find().catch(() => { });
+        if (client.isEmpty(stats)) {
+            return client.createStat().then((docs) => {
+                return updateStats(type, value, username, docs);
+            })
+        } else {
+            return updateStats(type, value, username, stats[stats.length - 1]);
+        }
+    };
+
+    client.addOrUpdateGuild = async (g, type, value, username) => {
+        if (client.isEmpty(await client.getGuild(g))) client.createGuild(g);
+        else client.updateGuild(g);
+        return client.makeOrUpdateStats(type, value, username);
+    };
 
     //timestampParser
     client.timestampParser = num => {
@@ -224,7 +297,7 @@ module.exports = async client => {
             let date = new Date(Date.now()).toLocaleDateString("fr-FR", options);
             return date.toString();
         }
-    }
+    };
 
     //Check if data isEmpty
     client.isEmpty = (value) => {
@@ -248,7 +321,7 @@ module.exports = async client => {
             mm = '0' + mm;
         }
         return yyyy + '-' + mm + '-' + dd;
-    }
+    };
 
     client.getDifference = (array1, array2) => {
         return array1.filter(object1 => {
@@ -256,7 +329,7 @@ module.exports = async client => {
                 return object1.id === object2.id;
             });
         });
-    }
+    };
 
     client.getDifferenceForGrades = (array1, array2) => {
         return array1.filter(object1 => {
@@ -264,7 +337,7 @@ module.exports = async client => {
                 return object1._raw.id === object2._raw.id;
             });
         });
-    }
+    };
 
     client.getCanceledClasses = (schedules) => {
         if (client.isEmpty(schedules)) return [];
@@ -275,14 +348,14 @@ module.exports = async client => {
             }
         }
         return canceledClasses;
-    }
+    };
 
     client.getStats = async () => {
         return {
             users: await client.guilds.cache.map(g => g.memberCount).reduce((a, b) => a + b),
             guilds: await client.guilds.cache.size
         }
-    }
+    };
 
     client.logger = log => {
         const files = fs.readdirSync("logs");
@@ -291,10 +364,9 @@ module.exports = async client => {
             if (!err) return console.log(log);
             console.log(err);
         })
-    }
+    };
 
     //Notion
-
     client.addHomeworkToNotion = async (name, content, startDate, endDate) => {
         try {
             await notion.pages.create({
@@ -360,5 +432,5 @@ module.exports = async client => {
             console.log(`${client.timestampParser()} => [ERROR]: ${err}`);
             client.logger(`${client.timestampParser()} => [ERROR]: ${err}`);
         }
-    }
+    };
 };

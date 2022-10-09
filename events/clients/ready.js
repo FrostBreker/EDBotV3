@@ -28,9 +28,9 @@ module.exports = {
         });
 
         //Presence
-        setInterval(async () => client.user.setPresence({ activities: [{ name: `EcoleDirecte servers - ${(await client.getAllGuild()).length} serveurs`, type: 'WATCHING' }], status: 'online' }), 10000);
+        setInterval(async () => client.user.setPresence({ activities: [{ name: `EcoleDirecte - ${(await client.getAllGuild()).length} serveurs`, type: 'WATCHING' }], status: 'online' }), 10000);
 
-        //Autosend
+        //Autopost
         await add(client);
         cron.schedule('*/15 * * * *', async () => {
             if (!client.isEmpty(users)) {
@@ -39,6 +39,11 @@ module.exports = {
             } else {
                 add(client);
             }
+        });
+
+        //Created stats
+        cron.schedule('0 0 * * *', async () => {
+            await client.createStat();
         });
 
         app.listen(process.env.PORT, () => {

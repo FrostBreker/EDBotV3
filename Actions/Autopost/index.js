@@ -1,5 +1,4 @@
 const CryptoJS = require("crypto-js");
-const _ = require('lodash');
 const { Session } = require("ecoledirecte.js");
 const api = require("../../Api/index");
 require("dotenv").config();
@@ -44,7 +43,7 @@ module.exports.add = async (client) => {
                 homeworks: homeworks,
                 schedule: client.getCanceledClasses(schedule),
                 messages: messages,
-                schoollife: schoollife.absencesRetards
+                schoollife: schoollife
             }
         )
     })
@@ -55,27 +54,27 @@ module.exports.send = async (client) => {
     for (let i = 0; i < newUsers.length; i++) {
         const user = newUsers[i];
         async function sendAutopost() {
-            const member = await client.users.fetch(user.userId).catch(() => { })
-            if (client.isEmpty(member)) return;
+            const dUser = await client.users.fetch(user.userId).catch(() => { })
+            if (client.isEmpty(dUser)) return;
 
             await user.compte.getGrades().then((notes) => {
-                sendNote(member, user, notes, client);
+                sendNote(dUser, user, notes, client);
             }).catch(() => { })
 
             await user.compte.getHomework(Date.now(), true).then((homeworks) => {
-                sendHomework(member, user, homeworks, client);
+                sendHomework(dUser, user, homeworks, client);
             }).catch(() => { })
 
             await user.compte.getTimetable([client.getTheDate(), client.getTheDate()]).then((schedule) => {
-                sendCanceledClass(member, user, schedule, client);
+                sendCanceledClass(dUser, user, schedule, client);
             }).catch(() => { })
 
             await user.compte.getMessages().then((messages) => {
-                sendMessages(member, user, messages, client);
+                sendMessages(dUser, user, messages, client);
             }).catch(() => { });
 
             await user.assgarCompte.getSchoolLife().then((schoollife) => {
-                sendSLS(member, user, schoollife.absencesRetards, client);
+                sendSLS(dUser, user, schoollife, client);
             }).catch(() => { });
         }
         sendAutopost()

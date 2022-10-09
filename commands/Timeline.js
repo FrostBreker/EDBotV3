@@ -1,7 +1,6 @@
-const { MessageEmbed } = require("discord.js");
 const { auth, noHomework } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { baseImageURI } = require("../config")
+const { Timeline } = require("../Embeds/ED");
 
 const data = new SlashCommandBuilder()
     .setName("emploisdutemps")
@@ -45,31 +44,6 @@ module.exports = {
             return interaction.editReply({ embeds: [noHomework()], ephemeral: true });
         }
 
-        const date = timeline[0].start_date.split(" ");
-
-        const embedPrincipal = new MessageEmbed()
-            .setColor(timeline[0].color)
-            .setTitle(`🔔 | Emplois du temps du: ${date[0]}`)
-            .setThumbnail(user.avatarURL() || baseImageURI)
-            .setTimestamp()
-            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
-            .addField('\u200B', '\u200B');
-
-        if (timeline[0].typeCours === "CONGE") {
-            return await interaction.editReply({ embeds: [noHomework()], ephemeral: true });
-        } else {
-            for (let i = 0; i < timeline.length; i++) {
-                const startDate = timeline[i].start_date.split(" ");
-                const endDate = timeline[i].end_date.split(" ");
-
-                embedPrincipal.addFields(
-                    { name: "📚", value: `**${timeline[i].text || timeline[i].matiere}** de **${startDate[1]}** à **${endDate[1]}**.`, inline: true },
-                    { name: "👩‍🏫", value: `**${timeline[i].prof || timeline[i].typeCours}**`, inline: true },
-                    { name: "\u200B", value: "\u200B", inline: false }
-                );
-            }
-        }
-
-        interaction.editReply({ embeds: [embedPrincipal] });
+        interaction.editReply({ embeds: [Timeline(timeline, user, client)] });
     }
 }

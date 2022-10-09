@@ -2,16 +2,11 @@ const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { baseImageURI } = require("../config");
+const { edMessages } = require("../Embeds/ED");
 
 const data = new SlashCommandBuilder()
     .setName("messages")
     .setDescription("Voire ses messages EcoleDirecte.")
-    .addNumberOption(option =>
-        option.setName("message")
-            .setDescription("Compris entre 0 et infinie.")
-            .setRequired(true)
-            .setMinValue(0)
-    )
     .addStringOption(option =>
         option.setName("confidentialités")
             .setDescription("Choisissez votre confidentialité")
@@ -26,12 +21,7 @@ module.exports = {
     data: data,
     runSlash: async (client, interaction) => {
         const user = interaction.member.user;
-        const data = [];
-        interaction.options._hoistedOptions.forEach((x) => {
-            return data.push(x.value);
-        })
-        const number = data[0];
-        const privacy = data[1];
+        const privacy = await interaction.options.getString("confidentialités");
 
         await client.defferWithPrivacy(privacy, interaction)
 
@@ -42,14 +32,11 @@ module.exports = {
 
         const messages = await compte.getMessages();
         if (client.isEmpty(messages)) {
-            return interaction.editReply({ content: `Ce message n'existe **pas**\nMessage(s) disponible(s)**:**\n**0** - **${nbv}**`, ephemeral: true })
+            return interaction.editReply({ content: `Une erreur est survenue.`, ephemeral: true });
         }
-        let nb = messages.length;
-
-        let nbv = nb > 0 ? nb - 1 : nb;
-        const h = messages[number];
-        if (number > nbv || client.isEmpty(h)) {
-            return interaction.editReply({ content: `Veuillez préciser un nombre entre : **0** - **${nbv}**`, ephemeral: true });
+        const h = messages[0];
+        if (client.isEmpty(h)) {
+            return interaction.editReply({ content: `Une erreur est survenue.`, ephemeral: true });
         }
 
         if (!h._raw.from.name || !h._raw.subject || !h._raw.date) {
@@ -64,15 +51,6 @@ module.exports = {
         })
         const ref = refined ? refined.join("\n") : `Inconnue.`;
 
-        const embedPrincipal = new MessageEmbed()
-            .setColor(430591)
-            .setTitle(`> 🔔 | Message de ${h._raw.from.name}`)
-            .setThumbnail(user.avatarURL() || baseImageURI)
-            .setDescription("**Messages : ** `0 - " + nbv + "`\n\n📢 : **" + h._raw.subject + "**\n\n📚  : **" + ref + "**\n\n📅 : " + "<t:" + parseInt(Date.parse(h.date) / 1000) + ":R>")
-            .setTimestamp()
-            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
-
-
-        interaction.editReply({ embeds: [embedPrincipal] });
+        interaction.editReply({ embeds: [edMessages(h, ref, user, client)], components: [client.createSelectMenu(messages, "mails", h.id)] });
     }
 }

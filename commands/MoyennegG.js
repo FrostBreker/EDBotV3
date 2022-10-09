@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { baseImageURI } = require("../config");
+const { gradesAverage } = require("../Embeds/ED");
 
 const data = new SlashCommandBuilder()
     .setName("moyenne")
@@ -55,14 +56,6 @@ module.exports = {
         const semester = ref._raw;
         const moyenneClasse = semester.ensembleMatieres.moyenneClasse;
 
-        const embedPrincipal = new MessageEmbed()
-            .setColor(430591)
-            .setTitle(`> 🔔 | Moyenne genérale`)
-            .setThumbnail(user.avatarURL() || baseImageURI)
-            .setDescription("**Periodes :** `" + "0 - " + nbv + "`\n\n📅 : **" + semester.periode + "**\n\n📈 : **" + semester.ensembleMatieres.moyenneGenerale + "/20" + "**\n\n" + client.getPercent(semester.ensembleMatieres.moyenneGenerale, moyenneClasse, 20))
-            .setTimestamp()
-            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
-
-        interaction.editReply({ embeds: [embedPrincipal] });
+        interaction.editReply({ embeds: [gradesAverage(semester, moyenneClasse, nbv, user, client)] });
     }
 }

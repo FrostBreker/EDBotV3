@@ -6,11 +6,11 @@ const axios = require("axios");
 // —————————————————————————————————————————————————————————————————————————————
 
 const Student = require("./Student"),
-      Family  = require("./Family");
+    Family = require("./Family");
 
 class Session {
 
-    constructor() {}
+    constructor() { }
 
     async login(login, password) {
         try {
@@ -20,7 +20,7 @@ class Session {
                     `data={"identifiant": "${login}", "motdepasse": "${password}"}`
                 );
 
-            if ( response.data.code === 505 )
+            if (response.data.code === 505)
                 throw new Error(err);
 
             const account = response.data.data.accounts[0];
@@ -29,10 +29,8 @@ class Session {
                 const student = new Student(this, account);
                 this.token = response.data.token;
                 return student;
-            } else if (account.typeCompte === "Famille") {
-                const family = new Family(this, response.data.data);
-                await family.fetch(response.data.token);
-                return family;
+            } else {
+                throw new Error("Only students are supported");
             }
 
             return this

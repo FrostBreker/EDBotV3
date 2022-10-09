@@ -1,21 +1,13 @@
-const { MessageEmbed } = require('discord.js');
 const _ = require('lodash');
+const { grades } = require('../../Embeds/ED');
 
-function sendGrades(member, user, notes, client) {
+function sendGrades(dUser, user, notes, client) {
     if (!client.isEmpty(notes) && !client.isEmpty(user.notes)) {
         if (!_.isEqual(user.notes, notes)) {
             const sortedArray = client.getDifferenceForGrades(notes, user.notes);
             sortedArray.map(async (s) => {
-                const embedPrincipal = new MessageEmbed()
-                    .setColor(430591)
-                    .setTitle(`> 🔔 | Nouvelle note en ${s.subjectName}`)
-                    .setThumbnail(member.avatarURL() || client.user.avatarURL())
-                    .setDescription("<:annonce:962378435815161936> : **" + s.subjectName + "** - **" + s.name + "** - **" + s._raw.typeDevoir + "**\n\n<:stats:962354418660028416> : " + s.value + "/" + s.outOf + "(**Coef** : " + s._raw.coef + ")\n\n" + client.getPercent(s.value, s.classAvg, s.outOf) + "\n\n<:planning:1020044801409826816> : <t:" + parseInt(Date.parse(s._raw.date) / 1000) + ":R>")
-                    .setTimestamp()
-                    .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
-
-                return await member.send({ embeds: [embedPrincipal] }).then(async () => {
-                    client.logger(`${client.timestampParser()} => [INFO] Notes sent to ${user.userId}`);
+                return await dUser.send({ embeds: [grades(s, dUser, client)] }).then(async () => {
+                    client.makeOrUpdateStats("dm", "notes", dUser.tag);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })

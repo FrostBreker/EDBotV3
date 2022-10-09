@@ -1,16 +1,11 @@
 const { MessageEmbed } = require("discord.js");
 const { auth } = require("../Embeds/Misc");
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { edHomeworks } = require("../Embeds/ED");
 
 const data = new SlashCommandBuilder()
     .setName("devoir")
     .setDescription("Voire ses devoirs EcoleDirecte.")
-    .addNumberOption(option =>
-        option.setName("devoir")
-            .setDescription("Compris entre 0 et infinie.")
-            .setRequired(true)
-            .setMinValue(0)
-    )
     .addStringOption(option =>
         option.setName("confidentialités")
             .setDescription("Choisissez votre confidentialité")
@@ -25,12 +20,7 @@ module.exports = {
     description: "Voire vos devoir(s) EcoleDirecte.",
     runSlash: async (client, interaction) => {
         const user = interaction.member.user;
-        const data = [];
-        interaction.options._hoistedOptions.forEach((x) => {
-            return data.push(x.value);
-        })
-        const number = data[0];
-        const privacy = data[1];
+        const privacy = await interaction.options.getString("confidentialités");
 
         await client.defferWithPrivacy(privacy, interaction)
 
@@ -43,22 +33,10 @@ module.exports = {
         if (client.isEmpty(homeworks)) {
             return interaction.editReply(`**Aucun devoir(s) pour le ${client.timestampParser(Date.now())}.**\n🏖️***Profiter!***🏖️`)
         }
-        let nb = homeworks.length;
-
-        let nbv = nb > 0 ? nb - 1 : nb;
-        const h = homeworks[number];
-        if (number > nbv || client.isEmpty(h)) {
-            return interaction.editReply({ content: `Veuillez préciser un nombre entre : **0** - **${nbv}**`, ephemeral: true });
+        if (client.isEmpty(homeworks[0])) {
+            return interaction.editReply({ content: `Une erreur est survenue.`, ephemeral: true });
         }
 
-        const embedPrincipal = new MessageEmbed()
-            .setColor(430591)
-            .setTitle(`> 🔔 | Travaille à faire en ${h.subject.name} (${h.teacher})`)
-            .setThumbnail(user.avatarURL())
-            .setDescription(`Nombre(s) de devoirs: 0 - ${nbv}\n\n> ${h.job.content.text ? h.job.content.text : "Contenue inconnue"}\n\n📅 ${h.date ? `<t:${parseInt(Date.parse(h.date) / 1000)}:R>` : "Inconue"}`)
-            .setTimestamp()
-            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
-
-        interaction.editReply({ embeds: [embedPrincipal] });
+        interaction.editReply({ embeds: [edHomeworks(homeworks[0], user, client)], components: [client.createSelectMenu(homeworks, "homeworks", homeworks[0].id)] });
     }
 }

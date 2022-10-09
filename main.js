@@ -47,10 +47,21 @@ client.commands = new Collection();
 ['EventUtil', "CommandUtil"].forEach(handler => { require(`./utils/handlers/${handler}`)(client) });
 
 //Check error
-process.on("exit", code => { client.logger(`Le processus s'est arrêté avec le code: ${code}!`); });
-process.on("uncaughtException", (err, origin) => { client.logger(`uncaughtException: ${err}`, `Origine: ${origin}`); });
-process.on("unhandledRejection", (reason, promise) => { client.logger(`UNHANDLED_REJECTION: ${reason}\n--------\n\n${promise}`); });
-process.on("warning", (...args) => { client.logger(...args); });
+process.on("exit", code => {
+    client.logger(`Le processus s'est arrêté avec le code: ${code}!`);
+});
+process.on("uncaughtException", (err, origin) => {
+    client.logger(`uncaughtException: ${err}`, `Origine: ${origin}`);
+    console.log(`uncaughtException: ${err}`, `Origine: ${origin}`);
+});
+process.on("unhandledRejection", (reason, promise) => {
+    client.logger(`UNHANDLED_REJECTION: ${reason}\n--------\n\n${promise}`);
+    console.log(`UNHANDLED_REJECTION: ${reason}\n--------`, promise);
+});
+process.on("warning", (...args) => {
+    client.logger(...args);
+    console.log(...args);
+});
 
 //Login
 client.login(TOKEN);

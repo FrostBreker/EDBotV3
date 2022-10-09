@@ -3,7 +3,7 @@ class Student {
     constructor(session, account) {
 
         this.session = session;
-        this.id      = account.id;
+        this.id = account.id;
 
     }
 
@@ -41,11 +41,11 @@ class Student {
                     await this.session.request(
                         `https://api.ecoledirecte.com/v3/Eleves/10697/cahierdetexte/${date}.awp?verbe=get&`);
 
-                response.data.data.matieres.map( ( x ) => {
+                response.data.data.matieres.map((x) => {
 
                     if (x.aFaire && x.aFaire.contenu) {
 
-                        let buff   = new Buffer.from(x.aFaire.contenu, 'base64');
+                        let buff = new Buffer.from(x.aFaire.contenu, 'base64');
                         let detail = buff
                             .toString('ascii')
                             .replace(/<\/?[^>]+(>|$)/g, "")
@@ -60,10 +60,10 @@ class Student {
                             .replace(/&ccedil;/g, "ç")
                             .trim()
 
-                         let temp = homework[date].find(y => y.idDevoir = x.id)
+                        let temp = homework[date].find(y => y.idDevoir = x.id)
 
-                         temp.content = detail
-                         temp.teacher = x.nomProf.substr(5);
+                        temp.content = detail
+                        temp.teacher = x.nomProf.substr(5);
 
                     }
                 })
@@ -106,7 +106,15 @@ class Student {
                 `https://api.ecoledirecte.com/v3/eleves/${this.id}/viescolaire.awp?verbe=get&`,
             );
 
-            return response.data.data;
+            const data = [];
+            for (const key in response.data.data.sanctionsEncouragements) {
+                data.push(response.data.data.sanctionsEncouragements[key]);
+            }
+            for (const key in response.data.data.absencesRetards) {
+                data.push(response.data.data.absencesRetards[key]);
+            }
+
+            return data;
         } catch (err) {
             throw new Error(err);
         }
@@ -144,9 +152,9 @@ class Student {
         }
     }
 
-     /**
-     * Retrieves the student's documents
-     */
+    /**
+    * Retrieves the student's documents
+    */
     async getDocuments() {
         try {
             const response = await this.session.request(

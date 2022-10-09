@@ -1,7 +1,7 @@
-const { MessageEmbed } = require('discord.js');
 const _ = require('lodash');
+const { edMessages } = require('../../Embeds/ED');
 
-function sendMessage(member, user, messages, client) {
+function sendMessage(dUser, user, messages, client) {
     if (!client.isEmpty(messages) && !client.isEmpty(user.messages)) {
         if (!_.isEqual(user.messages, messages)) {
             const sortedArray = client.getDifference(messages, user.messages);
@@ -14,16 +14,9 @@ function sendMessage(member, user, messages, client) {
                     }
                 })
                 const ref = refined ? refined.join("\n") : `Inconnue.`;
-                const embedPrincipal = new MessageEmbed()
-                    .setColor(430591)
-                    .setTitle(`> 🔔 | Message de ${s._raw.from.name}`)
-                    .setThumbnail(member.avatarURL() || client.user.avatarURL())
-                    .setDescription("\n📢 : **" + s._raw.subject + "**\n\n📚  : **" + ref + "**\n\n<:planning:1020044801409826816> : " + "<t:" + parseInt(Date.parse(s.date) / 1000) + ":R>")
-                    .setTimestamp()
-                    .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 
-                return await member.send({ embeds: [embedPrincipal] }).then(async () => {
-                    client.logger(`${client.timestampParser()} => [INFO] Messages sent to ${user.userId}`);
+                return await dUser.send({ embeds: [edMessages(s, ref, dUser, client)] }).then(async () => {
+                    client.makeOrUpdateStats("dm", "mail", dUser.tag);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })
