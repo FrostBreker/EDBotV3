@@ -44,6 +44,8 @@ module.exports = {
             return interaction.editReply({ embeds: [noHomework()], ephemeral: true });
         }
 
-        interaction.editReply({ embeds: [Timeline(timeline, user, client)] });
+        await interaction.editReply({ embeds: [Timeline(timeline, user, client)] }).catch(() => {
+            return interaction.editReply({ embeds: [noHomework()], ephemeral: true });
+        })
     }
 }

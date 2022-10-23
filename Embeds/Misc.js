@@ -35,5 +35,15 @@ module.exports = {
             .setColor(430591)
 
         return embed;
-    }
+    },
+    wrongServer: () => {
+        const embed = new MessageEmbed()
+            .setTitle("😒 - Erreur de serveur")
+            .setDescription("> Une erreur est survenue avec votre serveur, veuillez réinviter le BOT en cliquant sur le bouton ci-dessous.\nSi le problème persiste veuillez rejoindre le serveur de support.")
+            .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: baseImageURI })
+            .setThumbnail(baseImageURI)
+            .setTimestamp()
+            .setColor(430591)
+        return embed;
+    },
 }

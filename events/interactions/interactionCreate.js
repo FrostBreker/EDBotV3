@@ -1,11 +1,13 @@
 const { wrongVBtn } = require('../../Buttons/MiscButtons');
 const config = require('../../config');
+const { wrongServer } = require('../../Embeds/Misc');
 
 module.exports = {
     name: "interactionCreate",
     once: false,
     async execute(client, interaction) {
         const guild = await client.guilds.cache.get(interaction.guildId);
+        if (client.isEmpty(guild) || !guild.id) return interaction.reply({ embeds: [wrongServer()], components: [wrongVBtn()] });
         const guildAuth = await client.getGuild(guild);
 
         if (interaction.isCommand()) {

@@ -29,6 +29,7 @@ module.exports = {
             .setColor(color)
             .setTitle(`🔔 | Emplois du temps du: ${date[0]}`)
             .setThumbnail(user.avatarURL() || baseImageURI)
+            .setDescription("\u200B")
             .setTimestamp()
             .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
             .addField('\u200B', '\u200B');
