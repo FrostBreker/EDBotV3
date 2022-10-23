@@ -29,7 +29,7 @@ module.exports = {
         };
 
         const vieScolaire = await compte.getSchoolLife();
-        const vs = vieScolaire[0];
+        const vs = vieScolaire[vieScolaire.length > 0 ? vieScolaire.length - 1 : 0];
         if (client.isEmpty(vieScolaire) || client.isEmpty(vs)) {
             return interaction.editReply({ content: "Une érreur est survenue.", ephemeral: true });
         };

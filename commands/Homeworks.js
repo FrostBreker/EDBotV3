@@ -32,10 +32,11 @@ module.exports = {
         if (client.isEmpty(homeworks)) {
             return interaction.editReply(`**Aucun devoir(s) pour le ${client.timestampParser(Date.now())}.**\n🏖️***Profiter!***🏖️`)
         }
+        const h = homeworks[homeworks.length > 0 ? homeworks.length - 1 : 0];
         if (client.isEmpty(homeworks[0])) {
             return interaction.editReply({ content: `Une erreur est survenue.`, ephemeral: true });
         }
 
-        interaction.editReply({ embeds: [edHomeworks(homeworks[0], user, client)], components: [client.createSelectMenu(homeworks, "homeworks", homeworks[0].id)] });
+        interaction.editReply({ embeds: [edHomeworks(h, user, client)], components: [client.createSelectMenu(homeworks, "homeworks", h.id)] });
     }
 }

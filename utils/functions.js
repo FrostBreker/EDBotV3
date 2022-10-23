@@ -8,7 +8,7 @@ const api = require("../Api/index");
 const fs = require("fs");
 const { Client } = require("@notionhq/client");
 const { edSelect } = require("../SelectMenu/ED");
-const { edHomeworks, edMessages, grades, schoolLife } = require("../Embeds/ED");
+const { edHomeworks, edMessages, grades, schoolLife, gradesAverage } = require("../Embeds/ED");
 const { auth } = require("../Embeds/Misc");
 
 const notion = new Client({
@@ -166,6 +166,16 @@ module.exports = async client => {
                     });
                 }
                 break;
+            case "average":
+                ref = [];
+                for (let i = 0; i < data.length; i++) {
+                    const e = data[i];
+                    ref.push({
+                        label: `${e.name}`,
+                        value: e.code.toString()
+                    });
+                }
+                break;
         }
         if (ref.length >= 24) {
             ref.reverse();
@@ -218,6 +228,13 @@ module.exports = async client => {
                 });
                 if (client.isEmpty(data)) return;
                 else return schoolLife(user, data, client);
+            case "average":
+                const periods = await compte.getPeriods();
+                data = await periods.find(h => {
+                    if (h.code.toString() === id.toString()) return h;
+                });
+                if (client.isEmpty(data)) return;
+                else return gradesAverage(data, data._raw.ensembleMatieres.moyenneClasse, user, client);
         }
     };
 

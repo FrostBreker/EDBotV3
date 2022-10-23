@@ -30,7 +30,7 @@ module.exports = {
 
         const gradesList = await compte.getGrades();
 
-        const gr = gradesList[0];
+        const gr = gradesList[gradesList.length > 0 ? gradesList.length - 1 : 0];
         if (client.isEmpty(gradesList) || client.isEmpty(gr)) {
             return interaction.editReply({ content: `**Une erreur est survenue.**`, ephemeral: true })
         }

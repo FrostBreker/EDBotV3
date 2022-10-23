@@ -32,7 +32,7 @@ module.exports = {
         if (client.isEmpty(messages)) {
             return interaction.editReply({ content: `Une erreur est survenue.`, ephemeral: true });
         }
-        const h = messages[0];
+        const h = messages[messages.length > 0 ? messages.length - 1 : 0];
         if (client.isEmpty(h)) {
             return interaction.editReply({ content: `Une erreur est survenue.`, ephemeral: true });
         }

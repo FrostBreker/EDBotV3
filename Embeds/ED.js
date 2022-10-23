@@ -81,12 +81,13 @@ module.exports = {
 
         return embedPrincipal;
     },
-    gradesAverage: (s, moyenneClasse, nbv, dUser, client) => {
+    gradesAverage: (s, moyenneClasse, dUser, client) => {
+        const value = s._raw.ensembleMatieres.moyenneGenerale
         const embedPrincipal = new MessageEmbed()
             .setColor(color)
             .setTitle(`> 🔔 | Moyenne genérale`)
             .setThumbnail(dUser.avatarURL() || baseImageURI)
-            .setDescription("**Periodes :** `" + "0 - " + nbv + "`\n\n📅 : **" + s.periode + "**\n\n📈 : **" + s.ensembleMatieres.moyenneGenerale + "/20" + "**\n\n" + client.getPercent(s.ensembleMatieres.moyenneGenerale, moyenneClasse, 20))
+            .setDescription(`\n\n📅 **${s.name}**\n📈 **${value}**/**20**\n${client.getPercent(value, moyenneClasse, 20)}`)
             .setTimestamp()
             .setFooter({ text: 'Ⓒ EcoleDirecteBOT | 🌐', iconURL: client.user.avatarURL() })
 

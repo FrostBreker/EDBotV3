@@ -5,12 +5,6 @@ const { gradesAverage } = require("../Embeds/ED");
 const data = new SlashCommandBuilder()
     .setName("moyenne")
     .setDescription("Voire ses moyennes EcoleDirecte.")
-    .addNumberOption(option =>
-        option.setName("moyenne")
-            .setDescription("Compris entre 0 et infinie.")
-            .setRequired(true)
-            .setMinValue(0)
-    )
     .addStringOption(option =>
         option.setName("confidentialités")
             .setDescription("Choisissez votre confidentialité")
@@ -25,12 +19,7 @@ module.exports = {
     data: data,
     runSlash: async (client, interaction) => {
         const user = interaction.member.user;
-        const data = [];
-        interaction.options._hoistedOptions.forEach((x) => {
-            return data.push(x.value);
-        })
-        const number = data[0];
-        const privacy = data[1];
+        const privacy = await interaction.options.getString("confidentialités");
 
         await client.defferWithPrivacy(privacy, interaction)
 
@@ -41,19 +30,15 @@ module.exports = {
         const periods = await compte.getPeriods();
 
         if (client.isEmpty(periods)) {
-            return await interaction.editReply({ content: `Cette periode n'existe **pas**\nPeriodes disponibles**:**\n**0** - **${nbv}**`, ephemral: true });
+            return interaction.editReply({ content: `Une erreur est survenue.`, ephemeral: true });
         }
-        let nb = periods.length;
-
-        const ref = periods[number];
-
-        let nbv = nb > 0 ? nb - 1 : nb;
-        if (number > nbv || client.isEmpty(ref)) {
-            return await interaction.editReply({ content: `Veuillez préciser un nombre entre : **0** - **${nbv}**`, ephemeral: true });
+        const ref = periods[0];
+        if (client.isEmpty(ref)) {
+            return interaction.editReply({ content: `Une erreur est survenue.`, ephemeral: true });
         }
-        const semester = ref._raw;
-        const moyenneClasse = semester.ensembleMatieres.moyenneClasse;
 
-        interaction.editReply({ embeds: [gradesAverage(semester, moyenneClasse, nbv, user, client)] });
+        const moyenneClasse = ref._raw.ensembleMatieres.moyenneClasse;
+
+        interaction.editReply({ embeds: [gradesAverage(ref, moyenneClasse, user, client)], components: [client.createSelectMenu(periods, "average", ref.code)] });
     }
 }
