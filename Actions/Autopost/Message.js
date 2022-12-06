@@ -16,7 +16,7 @@ function sendMessage(dUser, user, messages, client) {
                 const ref = refined ? refined.join("\n") : `Inconnue.`;
 
                 return await dUser.send({ embeds: [edMessages(s, ref, dUser, client)] }).then(async () => {
-                    client.makeOrUpdateStats("dm", "mail", dUser.tag);
+                    client.makeOrUpdateStats("dm", "mail", dUser);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })

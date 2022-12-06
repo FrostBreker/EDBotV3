@@ -7,7 +7,7 @@ function sendGrades(dUser, user, notes, client) {
             const sortedArray = client.getDifferenceForGrades(notes, user.notes);
             sortedArray.map(async (s) => {
                 return await dUser.send({ embeds: [grades(s, dUser, client)] }).then(async () => {
-                    client.makeOrUpdateStats("dm", "notes", dUser.tag);
+                    client.makeOrUpdateStats("dm", "notes", dUser);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })

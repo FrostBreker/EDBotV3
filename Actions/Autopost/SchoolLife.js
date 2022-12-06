@@ -7,7 +7,7 @@ function sendSL(dUser, user, schoollife, client) {
             const sortedArray = client.getDifference(schoollife, user.schoollife);
             sortedArray.map(async (vs) => {
                 return await dUser.send({ embeds: [schoolLife(dUser, vs, client)] }).then(async () => {
-                    client.makeOrUpdateStats("dm", "vie-scolaire", dUser.tag);
+                    client.makeOrUpdateStats("dm", "vie-scolaire", dUser);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })

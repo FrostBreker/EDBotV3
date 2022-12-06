@@ -107,11 +107,15 @@ class Student {
             );
 
             const data = [];
-            for (const key in response.data.data.sanctionsEncouragements) {
-                data.push(response.data.data.sanctionsEncouragements[key]);
+            if(response.data.data.sanctionsEncouragements) {
+                for (const key in response.data.data.sanctionsEncouragements) {
+                    data.push(response.data.data.sanctionsEncouragements[key]);
+                }
             }
-            for (const key in response.data.data.absencesRetards) {
-                data.push(response.data.data.absencesRetards[key]);
+            if(response.data.data.absencesRetards) {
+                for (const key in response.data.data.absencesRetards) {
+                    data.push(response.data.data.absencesRetards[key]);
+                }
             }
 
             return data;

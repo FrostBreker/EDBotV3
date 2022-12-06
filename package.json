@@ -1,6 +1,6 @@
 {
   "name": "ed-bot-v3",
-  "version": "3.7.3",
+  "version": "3.7.4",
   "description": "",
   "main": "index.js",
   "scripts": {

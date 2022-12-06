@@ -7,6 +7,8 @@ const statSchema = mongoose.Schema({
       {
         value: String,
         timestamp: Number,
+        userId: String,
+        guildId: String
       }
     ],
     require: true
@@ -17,6 +19,7 @@ const statSchema = mongoose.Schema({
         _id: mongoose.Schema.Types.ObjectId,
         value: String,
         timestamp: Number,
+        userId: String
       }
     ],
     require: true

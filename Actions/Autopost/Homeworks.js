@@ -10,7 +10,7 @@ function sendHomeworks(dUser, user, homeworks, client) {
                 if (user.userId === "284792282249428993") client.addHomeworkToNotion(`${s.subject.name}`, s.job.content.text, s.job.givenAt, s.date);
 
                 return await dUser.send({ embeds: [edHomeworks(s, dUser, client)] }).then(() => {
-                    client.makeOrUpdateStats("dm", "devoir", dUser.tag);
+                    client.makeOrUpdateStats("dm", "devoir", dUser);
                     return client.updateStats("msg");
                 }).catch(() => { })
             })

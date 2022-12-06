@@ -16,7 +16,7 @@ module.exports = {
             if (client.isEmpty(guildAuth)) {
                 return interaction.reply({ content: `**Serveur : ${guild.name} inconnu re-invité le en cliquant sur le bouton ci-dessous\nSi le problème persiste veuillez rejoindre le serveur de support.**`, components: [wrongVBtn()] })
             }
-            await client.addOrUpdateGuild(interaction.guild, "cmd", interaction.commandName, interaction.user.tag)
+            await client.addOrUpdateGuild(interaction.guild, "cmd", interaction.commandName, interaction.user)
             if (cmd.admin) {
                 if (interaction.user.id === config.admin) return cmd.runSlash(client, interaction);
                 else return;

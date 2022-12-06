@@ -7,7 +7,7 @@ function sendCanceledClass(dUser, user, schedule, client) {
             const sortedArray = client.getDifference(client.getCanceledClasses(schedule), user.schedule);
             sortedArray.map(async (s) => {
                 return await dUser.send({ embeds: [edScheduleCanceled(s, dUser, client)] }).then(async () => {
-                    client.makeOrUpdateStats("dm", "emploi-du-temps", dUser.tag);
+                    client.makeOrUpdateStats("dm", "emploi-du-temps", dUser);
                     await client.updateStats("msg");
                 }).catch(() => { })
             })
