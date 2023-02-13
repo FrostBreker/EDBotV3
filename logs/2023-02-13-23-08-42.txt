@@ -1,0 +1,21 @@
+Commande chargée [🛢️] : compte
+Commande chargée [🛢️] : authentication
+Commande chargée [🛢️] : devoir
+Commande chargée [🛢️] : messages
+Commande chargée [🛢️] : moyenne
+Commande chargée [🛢️] : schoollife
+Commande chargée [🛢️] : emploisdutemps
+Started refreshing application (/) commands.
+Commande chargée [🛢️] : classement
+Commande chargée [🛢️] : note
+events Chargé [🛄] : ready
+events Chargé [🛄] : guildCreate
+events Chargé [🛄] : interactionCreate
+events Chargé [🛄] : messageCreate
+events Chargé [🛄] : guildDelete
+13/02/2023 23:08:42 => MongoDB connected!
+Successfully reloaded application (/) commands.
+13/02/2023 23:08:43 => const anotherTest = true;#8515 with 13 users!
+13/02/2023 23:08:43 => Express server is connected on port: 26065
+13/02/2023 23:09:00 => Update d'un serveur => ѴΛĿT
+13/02/2023 23:09:00 => [STATS] Commande => compte => (FrostBreker#8492)

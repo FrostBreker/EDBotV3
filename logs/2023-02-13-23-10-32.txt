@@ -1,0 +1,25 @@
+Commande chargée [🛢️] : compte
+Commande chargée [🛢️] : authentication
+Commande chargée [🛢️] : messages
+Commande chargée [🛢️] : schoollife
+Commande chargée [🛢️] : moyenne
+Commande chargée [🛢️] : emploisdutemps
+Commande chargée [🛢️] : note
+Commande chargée [🛢️] : devoir
+Started refreshing application (/) commands.
+Commande chargée [🛢️] : classement
+events Chargé [🛄] : ready
+events Chargé [🛄] : guildCreate
+events Chargé [🛄] : interactionCreate
+events Chargé [🛄] : guildDelete
+events Chargé [🛄] : messageCreate
+13/02/2023 23:10:32 => MongoDB connected!
+Successfully reloaded application (/) commands.
+13/02/2023 23:10:33 => const anotherTest = true;#8515 with 13 users!
+13/02/2023 23:10:33 => Express server is connected on port: 26065
+13/02/2023 23:10:39 => Update d'un serveur => ѴΛĿT
+13/02/2023 23:10:39 => [STATS] Commande => compte => (FrostBreker#8492)
+UNHANDLED_REJECTION: TypeError: dbUser2.push is not a function
+--------
+
+[object Promise]

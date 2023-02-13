@@ -1,0 +1,12 @@
+UNHANDLED_REJECTION: SyntaxError: Unexpected token '>'
+--------
+
+[object Promise]
+events Chargé [🛄] : ready
+events Chargé [🛄] : guildCreate
+events Chargé [🛄] : messageCreate
+events Chargé [🛄] : interactionCreate
+events Chargé [🛄] : guildDelete
+13/02/2023 23:10:21 => MongoDB connected!
+13/02/2023 23:10:22 => const anotherTest = true;#8515 with 13 users!
+13/02/2023 23:10:22 => Express server is connected on port: 26065

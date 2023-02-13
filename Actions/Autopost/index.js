@@ -32,7 +32,7 @@ module.exports.add = async (client) => {
         const schedule = await compte.getTimetable([client.getTheDate(), client.getTheDate()]).catch(() => { })
         const messages = await compte.getMessages().catch(() => { });
 
-        const schoollife = await compteAsgar.getSchoolLife();
+        const schoollife = await compteAsgar.getSchoolLife().catch(() => { });
 
         users.push(
             {
